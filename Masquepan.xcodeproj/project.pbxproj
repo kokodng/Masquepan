@@ -14,6 +14,9 @@
 		33C9EBED2032F97900256E94 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33C9EBEB2032F97900256E94 /* LaunchScreen.storyboard */; };
 		33C9EBF82032F97900256E94 /* MasquepanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C9EBF72032F97900256E94 /* MasquepanTests.swift */; };
 		33C9EC032032F97900256E94 /* MasquepanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C9EC022032F97900256E94 /* MasquepanUITests.swift */; };
+		33D6591720371101005F1B16 /* ClienteHttp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D6591420371100005F1B16 /* ClienteHttp.swift */; };
+		33D6591820371101005F1B16 /* RestJsonUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D6591520371101005F1B16 /* RestJsonUtil.swift */; };
+		33D6591920371101005F1B16 /* OnHttpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D6591620371101005F1B16 /* OnHttpResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		33C9EBFE2032F97900256E94 /* MasquepanUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MasquepanUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		33C9EC022032F97900256E94 /* MasquepanUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasquepanUITests.swift; sourceTree = "<group>"; };
 		33C9EC042032F97900256E94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		33D6591420371100005F1B16 /* ClienteHttp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClienteHttp.swift; sourceTree = "<group>"; };
+		33D6591520371101005F1B16 /* RestJsonUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestJsonUtil.swift; sourceTree = "<group>"; };
+		33D6591620371101005F1B16 /* OnHttpResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnHttpResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +103,7 @@
 		33C9EBE12032F97900256E94 /* Masquepan */ = {
 			isa = PBXGroup;
 			children = (
+				33D65913203710DB005F1B16 /* Rest */,
 				33C9EBE22032F97900256E94 /* AppDelegate.swift */,
 				33C9EBE42032F97900256E94 /* ViewController.swift */,
 				33C9EBE62032F97900256E94 /* Main.storyboard */,
@@ -123,6 +130,16 @@
 				33C9EC042032F97900256E94 /* Info.plist */,
 			);
 			path = MasquepanUITests;
+			sourceTree = "<group>";
+		};
+		33D65913203710DB005F1B16 /* Rest */ = {
+			isa = PBXGroup;
+			children = (
+				33D6591420371100005F1B16 /* ClienteHttp.swift */,
+				33D6591620371101005F1B16 /* OnHttpResponse.swift */,
+				33D6591520371101005F1B16 /* RestJsonUtil.swift */,
+			);
+			path = Rest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,8 +276,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33D6591720371101005F1B16 /* ClienteHttp.swift in Sources */,
 				33C9EBE52032F97900256E94 /* ViewController.swift in Sources */,
 				33C9EBE32032F97900256E94 /* AppDelegate.swift in Sources */,
+				33D6591920371101005F1B16 /* OnHttpResponse.swift in Sources */,
+				33D6591820371101005F1B16 /* RestJsonUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
