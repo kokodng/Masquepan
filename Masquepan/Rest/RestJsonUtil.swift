@@ -1,4 +1,3 @@
-
 import Foundation
 class RestJsonUtil{
 // tranformar diccionarios en json y viceversa
