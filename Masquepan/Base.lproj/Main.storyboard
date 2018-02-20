@@ -40,11 +40,19 @@
                                     <action selector="btLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jOg-cU-mjP"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Introduce tus credenciales" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U0C-1X-gTC">
+                                <rect key="frame" x="16" y="251" width="343" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="lbMessage" destination="U0C-1X-gTC" id="lnl-BJ-Jis"/>
                         <outlet property="tfPassword" destination="Yh7-Ly-rD3" id="dkk-2e-xo8"/>
                         <outlet property="tfUser" destination="GvP-qT-cKv" id="Qbn-ec-Y83"/>
                     </connections>
