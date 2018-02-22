@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33084B66203EA92F00215A50 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33084B64203EA92F00215A50 /* Products.swift */; };
+		33084B67203EA92F00215A50 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33084B65203EA92F00215A50 /* Repository.swift */; };
+		33084B69203EA93E00215A50 /* Protocols in Resources */ = {isa = PBXBuildFile; fileRef = 33084B68203EA93E00215A50 /* Protocols */; };
+		33084B6B203EA95700215A50 /* ProdListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33084B6A203EA95700215A50 /* ProdListPresenter.swift */; };
 		33C9EBE32032F97900256E94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C9EBE22032F97900256E94 /* AppDelegate.swift */; };
 		33C9EBE52032F97900256E94 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C9EBE42032F97900256E94 /* ViewController.swift */; };
 		33C9EBE82032F97900256E94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33C9EBE62032F97900256E94 /* Main.storyboard */; };
@@ -37,6 +41,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		33084B64203EA92F00215A50 /* Products.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
+		33084B65203EA92F00215A50 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		33084B68203EA93E00215A50 /* Protocols */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Protocols; path = ../../ProyectosXcode/ListProds/ListProds/Protocols; sourceTree = "<group>"; };
+		33084B6A203EA95700215A50 /* ProdListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProdListPresenter.swift; sourceTree = "<group>"; };
 		33C9EBDF2032F97900256E94 /* Masquepan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Masquepan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33C9EBE22032F97900256E94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		33C9EBE42032F97900256E94 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +88,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		33084B63203EA83D00215A50 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				33084B64203EA92F00215A50 /* Products.swift */,
+				33084B65203EA92F00215A50 /* Repository.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		33084B6C203EA95A00215A50 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				33084B6A203EA95700215A50 /* ProdListPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		33C9EBD62032F97900256E94 = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +128,9 @@
 		33C9EBE12032F97900256E94 /* Masquepan */ = {
 			isa = PBXGroup;
 			children = (
+				33084B6C203EA95A00215A50 /* Presenter */,
+				33084B68203EA93E00215A50 /* Protocols */,
+				33084B63203EA83D00215A50 /* Model */,
 				33D65913203710DB005F1B16 /* Rest */,
 				33C9EBE22032F97900256E94 /* AppDelegate.swift */,
 				33C9EBE42032F97900256E94 /* ViewController.swift */,
@@ -251,6 +279,7 @@
 			files = (
 				33C9EBED2032F97900256E94 /* LaunchScreen.storyboard in Resources */,
 				33C9EBEA2032F97900256E94 /* Assets.xcassets in Resources */,
+				33084B69203EA93E00215A50 /* Protocols in Resources */,
 				33C9EBE82032F97900256E94 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,9 +305,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33084B67203EA92F00215A50 /* Repository.swift in Sources */,
 				33D6591720371101005F1B16 /* ClienteHttp.swift in Sources */,
 				33C9EBE52032F97900256E94 /* ViewController.swift in Sources */,
+				33084B6B203EA95700215A50 /* ProdListPresenter.swift in Sources */,
 				33C9EBE32032F97900256E94 /* AppDelegate.swift in Sources */,
+				33084B66203EA92F00215A50 /* Products.swift in Sources */,
 				33D6591920371101005F1B16 /* OnHttpResponse.swift in Sources */,
 				33D6591820371101005F1B16 /* RestJsonUtil.swift in Sources */,
 			);
