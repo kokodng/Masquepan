@@ -11,7 +11,7 @@ import Foundation
 class ProdListPresenter: PresenterProt {
     
     private let repo: Repository
-    weak private var view: ViewController? // ¿View controller o interfaz?
+    weak private var view: ProdsCollectionVC? // ¿View controller o interfaz?
     var prods : [Product]
     
     init(){
@@ -20,7 +20,7 @@ class ProdListPresenter: PresenterProt {
         self.prods = []
     }
     
-    func attachView(viewC:ViewController){
+    func attachView(viewC:ProdsCollectionVC){
         self.view = viewC
     }
     
