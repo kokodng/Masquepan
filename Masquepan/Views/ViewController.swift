@@ -48,19 +48,24 @@ class ViewController: UIViewController, OnHttpResponse {
             let resp = try JSONDecoder().decode(Resp.self, from: data)
             if resp.ok == 1 {
                 // perform segue
-                print("ok = 1")
+                performSegue(withIdentifier: "SegueLoginToHome", sender: self)
+                print("Login ok!")
             } else {
                 lbMessage.text = "Credenciales no válidos"
-                print("ok != 1")
+                print("Invalid login")
             }
         } catch {
             lbMessage.text = "Credenciales no válidos"
-            print("ok != 1")
+            print("Error login")
         }
     }
     
     func onErrorReceivingData(message: String) {
         print("Error receiving data")
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if let destination = 
     }
     
 }

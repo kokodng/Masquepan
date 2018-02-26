@@ -13,7 +13,8 @@ private let reuseIdentifier = "ProdCell"
 class ProdsCollectionVC: UICollectionViewController, ProdsViewProt {
     
     let presenter = ProdListPresenter()
-    var products : [Product] = [];
+    var products : [Product] = []
+    var productImages : [UIImage] = []
     // Recive prods data as a array of Products
     func setProds(_ prods: [Product]) {
         products = prods;
@@ -33,7 +34,7 @@ class ProdsCollectionVC: UICollectionViewController, ProdsViewProt {
         collectionViewProds.delegate = self
         
         let layout = self.collectionViewProds.collectionViewLayout as! UICollectionViewFlowLayout
-        collectionViewProds.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        collectionViewProds.contentInset = UIEdgeInsets(top: 25, left: 25, bottom: 30, right: 25)
         layout.minimumInteritemSpacing = 5
 
     }
@@ -103,27 +104,18 @@ class ProdsCollectionVC: UICollectionViewController, ProdsViewProt {
         cell?.layer.borderColor = UIColor.lightGray.cgColor
         cell?.layer.borderWidth = 0.5
     }
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
+    func downloadProdsImgs(){
+        DispatchQueue.global().async {
+            let baseUrl = "https://ios-javierrodrigueziturriaga.c9users.io/img/"
+            
+            for product in self.products {
+                let url = "\(baseUrl)\(String(describing: product.id)).jpg"
+            let data = try? Data(contentsOf: URL(string: url)!)
+            }
+            DispatchQueue.main.async {
+//                self.productImages.append(UIImage(data: data!)!)
+            }
+        }
     }
-    */
-
 }
