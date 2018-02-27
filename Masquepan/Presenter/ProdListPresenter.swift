@@ -58,14 +58,14 @@ class ProdListPresenter: PresenterProt {
     
     func downloadProdsImgs(){
         let baseUrl = "https://ios-javierrodrigueziturriaga.c9users.io/img/"
-        for product in self.prods {
-            let id = String(describing: product.id);
-            let url = "\(baseUrl)" + id + ".jpg"
             
             DispatchQueue.global().async {
-                let data = try? Data(contentsOf: URL(string: url)!)
-                print(data!)
-                DispatchQueue.main.async {
+                for product in self.prods {
+                    let id = String(describing: product.id);
+                    let url = "\(baseUrl)" + id + ".jpg"
+                    let data = try? Data(contentsOf: URL(string: url)!)
+                    print(data!)
+                    DispatchQueue.main.async {
                     guard let img = UIImage(data: data!) else {
                         print("img nil")
                         return

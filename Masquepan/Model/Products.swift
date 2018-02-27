@@ -8,12 +8,12 @@
 
 import Foundation
 
-class Product {
+class Product: Decodable {
     var id: String
-    var idFamily: String?
-    var product: String?
-    var price: Float?
-    var description: String?
+    var idFamily: String
+    var product: String
+    var price: Float
+    var description: String
     
     init(){
         self.id = "";

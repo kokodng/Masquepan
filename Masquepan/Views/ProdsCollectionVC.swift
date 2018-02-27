@@ -35,7 +35,7 @@ class ProdsCollectionVC: UICollectionViewController, ProdsViewProt {
         presenter.allProds()
         
         let layout = self.collectionViewProds.collectionViewLayout as! UICollectionViewFlowLayout
-        collectionViewProds.contentInset = UIEdgeInsets(top: 25, left: 25, bottom: 30, right: 25)
+        collectionViewProds.contentInset = UIEdgeInsets(top: 25, left: 30, bottom: 30, right: 30)
         layout.minimumInteritemSpacing = 5
 
     }

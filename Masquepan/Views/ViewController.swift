@@ -1,6 +1,6 @@
 import UIKit
 
-struct Resp: Decodable {
+struct Login: Decodable {
     let ok: Int
     let token: String
     let idmember: String
@@ -13,6 +13,10 @@ class ViewController: UIViewController, OnHttpResponse {
     @IBOutlet weak var lbMessage: UILabel!
     
     var response: [String:Any] = [:]
+    var state : String = "login";
+    var login : Login = Login(ok: 0, token: "",idmember: "")
+    var products : [Product] = []
+    var productImages : [UIImage] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,11 +48,59 @@ class ViewController: UIViewController, OnHttpResponse {
     }
     
     func onDataReceived(data: Data) {
+        switch(self.state){
+        case "login":
+            self.checkLogin(data: data)
+            downloadProducts()
+            break
+        case "products":
+            saveProducts(data)
+            break
+        
+        default:
+            print("Error at switch")
+        }
+        //                performSegue(withIdentifier: "SegueLoginToHome", sender: self)
+        
+    }
+    
+    func onErrorReceivingData(message: String) {
+        print("Error receiving data")
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if let destination = 
+    }
+    
+    func downloadProdsImgs(){
+        let baseUrl = "https://ios-javierrodrigueziturriaga.c9users.io/img/"
+        
+        DispatchQueue.global().async {
+            for product in self.products {
+                let id = String(describing: product.id);
+                let url = "\(baseUrl)" + id + ".jpg"
+                let data = try? Data(contentsOf: URL(string: url)!)
+                print(data!)
+                DispatchQueue.main.async {
+                    guard let img = UIImage(data: data!) else {
+                        print("img nil")
+                        return
+                    }
+                    self.productImages.append(img)
+                    if self.products.count == self.productImages.count{
+                        
+                    }
+                }
+            }
+        }
+    }
+    
+    func checkLogin(data: Data){
         do {
-            let resp = try JSONDecoder().decode(Resp.self, from: data)
-            if resp.ok == 1 {
-                performSegue(withIdentifier: "SegueLoginToHome", sender: self)
-                print("Login ok!")
+            login = try JSONDecoder().decode(Login.self, from: data)
+            if login.ok == 1 {
+                self.state = "products"
+                print("login ok!")
             } else {
                 lbMessage.text = "Credenciales no válidos"
                 print("Invalid login")
@@ -59,12 +111,20 @@ class ViewController: UIViewController, OnHttpResponse {
         }
     }
     
-    func onErrorReceivingData(message: String) {
-        print("Error receiving data")
+    func downloadProducts(){
+        guard let cliente = ClienteHttp(target: "products", authorization: "Bearer " + self.login.token, responseObject: self) else {
+            return
+        }
+        cliente.request()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let destination = 
+    func saveProducts(_ data: Data){
+        do {
+            products = try JSONDecoder().decode([Product].self, from: data)
+            print(products)
+        } catch {
+            print("Error products")
+        }
     }
     
 }
