@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import UIKit
+
 protocol ProdsViewProt {
-    func setProds(_ prods: [Product])
+    func setProds(_ prods: [Product], _ prodsImgs : [UIImage])
 }

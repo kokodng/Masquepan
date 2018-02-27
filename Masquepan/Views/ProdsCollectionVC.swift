@@ -16,9 +16,10 @@ class ProdsCollectionVC: UICollectionViewController, ProdsViewProt {
     var products : [Product] = []
     var productImages : [UIImage] = []
     // Recive prods data as a array of Products
-    func setProds(_ prods: [Product]) {
+    func setProds(_ prods: [Product], _ prodsImgs : [UIImage]) {
         products = prods;
-        print("SET PRODS : " + String(describing: products))
+        productImages = prodsImgs
+        collectionViewProds.reloadData()
     }
     
     
@@ -29,9 +30,9 @@ class ProdsCollectionVC: UICollectionViewController, ProdsViewProt {
         // self.clearsSelectionOnViewWillAppear = false
 
         presenter.attachView(viewC: self)
-        presenter.allProds()
         collectionViewProds.dataSource = self
         collectionViewProds.delegate = self
+        presenter.allProds()
         
         let layout = self.collectionViewProds.collectionViewLayout as! UICollectionViewFlowLayout
         collectionViewProds.contentInset = UIEdgeInsets(top: 25, left: 25, bottom: 30, right: 25)
@@ -74,7 +75,7 @@ class ProdsCollectionVC: UICollectionViewController, ProdsViewProt {
         //Asigna el contenido al label de la celda
         cell.lblProduct.text = products[indexPath.item].product
         //Asigna las imagenes al imageView de la celda
-        cell.imgProduct.image = UIImage(named: "meal1");
+        cell.imgProduct.image = productImages[indexPath.item]
         // Configure the cell
         print("cell lbl : " + String(describing: cell.lblProduct.text))
     
@@ -105,17 +106,4 @@ class ProdsCollectionVC: UICollectionViewController, ProdsViewProt {
         cell?.layer.borderWidth = 0.5
     }
     
-    func downloadProdsImgs(){
-        DispatchQueue.global().async {
-            let baseUrl = "https://ios-javierrodrigueziturriaga.c9users.io/img/"
-            
-            for product in self.products {
-                let url = "\(baseUrl)\(String(describing: product.id)).jpg"
-            let data = try? Data(contentsOf: URL(string: url)!)
-            }
-            DispatchQueue.main.async {
-//                self.productImages.append(UIImage(data: data!)!)
-            }
-        }
-    }
 }

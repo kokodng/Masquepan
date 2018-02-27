@@ -3,7 +3,7 @@ import UIKit
 struct Resp: Decodable {
     let ok: Int
     let token: String
-    let id: String
+    let idmember: String
 }
 
 class ViewController: UIViewController, OnHttpResponse {
@@ -47,7 +47,6 @@ class ViewController: UIViewController, OnHttpResponse {
         do {
             let resp = try JSONDecoder().decode(Resp.self, from: data)
             if resp.ok == 1 {
-                // perform segue
                 performSegue(withIdentifier: "SegueLoginToHome", sender: self)
                 print("Login ok!")
             } else {

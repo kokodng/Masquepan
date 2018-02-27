@@ -7,11 +7,13 @@
 //
 
 import Foundation
+import UIKit
 
 class ProdListPresenter: PresenterProt {
     
+    var productImages : [UIImage] = []
     private let repo: Repository
-    weak private var view: ProdsCollectionVC? // ¿View controller o interfaz?
+    weak private var view: ProdsCollectionVC?
     var prods : [Product]
     
     init(){
@@ -36,11 +38,12 @@ class ProdListPresenter: PresenterProt {
     
     func finishLoading() {
         prods = repo.get()
-        notifyView()
+        downloadProdsImgs()
+        
     }
     
     func notifyView() {
-        view?.setProds(self.prods)
+        view?.setProds(self.prods, self.productImages)
     }
     
     func allProds() {
@@ -51,6 +54,29 @@ class ProdListPresenter: PresenterProt {
         }
         
         startLoading(urlparams: urlParams)
+    }
+    
+    func downloadProdsImgs(){
+        let baseUrl = "https://ios-javierrodrigueziturriaga.c9users.io/img/"
+        for product in self.prods {
+            let id = String(describing: product.id);
+            let url = "\(baseUrl)" + id + ".jpg"
+            
+            DispatchQueue.global().async {
+                let data = try? Data(contentsOf: URL(string: url)!)
+                print(data!)
+                DispatchQueue.main.async {
+                    guard let img = UIImage(data: data!) else {
+                        print("img nil")
+                        return
+                    }
+                    self.productImages.append(img)
+                    if self.prods.count == self.productImages.count{
+                        self.notifyView()
+                    }
+                }
+            }
+        }
     }
     
     

@@ -9,7 +9,7 @@
 import Foundation
 
 class Product {
-    var id: String?
+    var id: String
     var idFamily: String?
     var product: String?
     var price: Float?

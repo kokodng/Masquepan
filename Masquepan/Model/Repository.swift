@@ -23,5 +23,8 @@ class Repository : RepoProt{
         ]
     }
     
+    func downloadImages(){
+        
+    }
     
 }
