@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		33084B66203EA92F00215A50 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33084B64203EA92F00215A50 /* Products.swift */; };
+		33084B66203EA92F00215A50 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33084B64203EA92F00215A50 /* Product.swift */; };
 		33084B67203EA92F00215A50 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33084B65203EA92F00215A50 /* Repository.swift */; };
 		33084B6B203EA95700215A50 /* ProdListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33084B6A203EA95700215A50 /* ProdListPresenter.swift */; };
 		33084B6F203EB26A00215A50 /* ProdCellVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33084B6E203EB26A00215A50 /* ProdCellVC.swift */; };
@@ -47,7 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		33084B64203EA92F00215A50 /* Products.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
+		33084B64203EA92F00215A50 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		33084B65203EA92F00215A50 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		33084B6A203EA95700215A50 /* ProdListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProdListPresenter.swift; sourceTree = "<group>"; };
 		33084B6E203EB26A00215A50 /* ProdCellVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProdCellVC.swift; sourceTree = "<group>"; };
@@ -103,7 +103,7 @@
 		33084B63203EA83D00215A50 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				33084B64203EA92F00215A50 /* Products.swift */,
+				33084B64203EA92F00215A50 /* Product.swift */,
 				33084B65203EA92F00215A50 /* Repository.swift */,
 			);
 			path = Model;
@@ -346,7 +346,7 @@
 				33084B71203EB28500215A50 /* ProdsCollectionVC.swift in Sources */,
 				33084B6B203EA95700215A50 /* ProdListPresenter.swift in Sources */,
 				33C9EBE32032F97900256E94 /* AppDelegate.swift in Sources */,
-				33084B66203EA92F00215A50 /* Products.swift in Sources */,
+				33084B66203EA92F00215A50 /* Product.swift in Sources */,
 				33FDE43F2047F364002F0135 /* ProductDetailViewController.swift in Sources */,
 				33084B77203EBABC00215A50 /* RepoProt.swift in Sources */,
 				33D6591920371101005F1B16 /* OnHttpResponse.swift in Sources */,
