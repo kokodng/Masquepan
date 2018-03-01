@@ -23,9 +23,9 @@ class Product: Decodable {
         self.description = ""
     }
     
-    init(_ id: String, _ idFamily: String, _ product: String, _ price: String, _ description: String){
+    init(_ id: String, _ idfamily: String, _ product: String, _ price: String, _ description: String){
         self.id = id;
-        self.idfamily = idFamily;
+        self.idfamily = idfamily;
         self.product = product;
         self.price = price
         self.description = description
