@@ -10,6 +10,10 @@ struct Products: Decodable {
     var products: [Product]
 }
 
+struct Tickets: Decodable {
+    var tickets: [Ticket]
+}
+
 class ViewController: UIViewController, OnHttpResponse {
     
     @IBOutlet weak var tfUser: UITextField!
@@ -59,8 +63,12 @@ class ViewController: UIViewController, OnHttpResponse {
             break
         case "products":
             saveProducts(data)
+            self.state = "tickets"
+            downloadTickets()
             break
-        
+        case "tickets":
+            saveTickets(data)
+            break
         default:
             print("Error at switch")
         }
@@ -84,7 +92,6 @@ class ViewController: UIViewController, OnHttpResponse {
                 let id = String(describing: product.id);
                 let url = "\(baseUrl)" + id + ".jpg"
                 let data = try? Data(contentsOf: URL(string: url)!)
-                print(data!)
                 DispatchQueue.main.async {
                     guard let img = UIImage(data: data!) else {
                         print("img nil")
@@ -128,6 +135,22 @@ class ViewController: UIViewController, OnHttpResponse {
             print(products)
         } catch {
             print("Error products")
+        }
+    }
+    
+    func downloadTickets(){
+        guard let cliente = ClienteHttp(target: "tickets", authorization: "Bearer " + self.login.token, responseObject: self) else {
+            return
+        }
+        cliente.request()
+    }
+    
+    func saveTickets(_ data: Data){
+        do {
+            let tickets = try JSONDecoder().decode(Tickets.self, from: data)
+            print(tickets)
+        } catch {
+            print("Error tickets")
         }
     }
     

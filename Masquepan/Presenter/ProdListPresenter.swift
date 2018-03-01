@@ -64,7 +64,6 @@ class ProdListPresenter: PresenterProt {
                     let id = String(describing: product.id);
                     let url = "\(baseUrl)" + id + ".jpg"
                     let data = try? Data(contentsOf: URL(string: url)!)
-                    print(data!)
                     DispatchQueue.main.async {
                     guard let img = UIImage(data: data!) else {
                         print("img nil")
