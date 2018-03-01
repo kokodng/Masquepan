@@ -25,7 +25,6 @@
 		33D6591720371101005F1B16 /* ClienteHttp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D6591420371100005F1B16 /* ClienteHttp.swift */; };
 		33D6591820371101005F1B16 /* RestJsonUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D6591520371101005F1B16 /* RestJsonUtil.swift */; };
 		33D6591920371101005F1B16 /* OnHttpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D6591620371101005F1B16 /* OnHttpResponse.swift */; };
-		33FDE43A2047E915002F0135 /* ProductDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33FDE4392047E915002F0135 /* ProductDetail.storyboard */; };
 		33FDE43D2047E937002F0135 /* TicketDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33FDE43B2047E937002F0135 /* TicketDetail.storyboard */; };
 		33FDE43F2047F364002F0135 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FDE43E2047F364002F0135 /* ProductDetailViewController.swift */; };
 		33FDE4412047F78C002F0135 /* TicketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FDE4402047F78B002F0135 /* TicketTableViewController.swift */; };
@@ -73,7 +72,6 @@
 		33D6591420371100005F1B16 /* ClienteHttp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClienteHttp.swift; sourceTree = "<group>"; };
 		33D6591520371101005F1B16 /* RestJsonUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestJsonUtil.swift; sourceTree = "<group>"; };
 		33D6591620371101005F1B16 /* OnHttpResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnHttpResponse.swift; sourceTree = "<group>"; };
-		33FDE4392047E915002F0135 /* ProductDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ProductDetail.storyboard; path = "../../Desktop/Masquepan version antigua/ProductDetail.storyboard"; sourceTree = "<group>"; };
 		33FDE43C2047E937002F0135 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "../../Desktop/Masquepan version antigua/Masquepan/Base.lproj/TicketDetail.storyboard"; sourceTree = "<group>"; };
 		33FDE43E2047F364002F0135 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
 		33FDE4402047F78B002F0135 /* TicketTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTableViewController.swift; sourceTree = "<group>"; };
@@ -147,7 +145,6 @@
 			isa = PBXGroup;
 			children = (
 				33FDE43B2047E937002F0135 /* TicketDetail.storyboard */,
-				33FDE4392047E915002F0135 /* ProductDetail.storyboard */,
 				33C9EBE12032F97900256E94 /* Masquepan */,
 				33C9EBF62032F97900256E94 /* MasquepanTests */,
 				33C9EC012032F97900256E94 /* MasquepanUITests */,
@@ -320,7 +317,6 @@
 				33C9EBED2032F97900256E94 /* LaunchScreen.storyboard in Resources */,
 				33C9EBEA2032F97900256E94 /* Assets.xcassets in Resources */,
 				33C9EBE82032F97900256E94 /* Main.storyboard in Resources */,
-				33FDE43A2047E915002F0135 /* ProductDetail.storyboard in Resources */,
 				33FDE43D2047E937002F0135 /* TicketDetail.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
