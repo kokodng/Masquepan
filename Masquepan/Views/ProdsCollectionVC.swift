@@ -15,7 +15,7 @@ class ProdsCollectionVC: UICollectionViewController, ProdsViewProt {
     let presenter = ProdListPresenter()
     var products : [Product] = []
     var productImages : [UIImage] = []
-    // Recive prods data as a array of Products
+    // Receive prods data as a array of Products
     func setProds(_ prods: [Product], _ prodsImgs : [UIImage]) {
         products = prods;
         productImages = prodsImgs
@@ -71,6 +71,8 @@ class ProdsCollectionVC: UICollectionViewController, ProdsViewProt {
     @IBOutlet weak var collectionViewProds: UICollectionView!
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionViewProds.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ProdCellVC
+        cell.layer.borderColor = UIColor.lightGray.cgColor
+        cell.layer.borderWidth = 0.5
         
         //Asigna el contenido al label de la celda
         cell.lblProduct.text = products[indexPath.item].product
@@ -92,6 +94,10 @@ class ProdsCollectionVC: UICollectionViewController, ProdsViewProt {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
+        // Perform segue
+        
+         performSegue(withIdentifier: "segueCollectionToDetail", sender: self)
+        
         
         //Borde de selección
         cell?.layer.borderColor = UIColor.gray.cgColor
@@ -104,6 +110,10 @@ class ProdsCollectionVC: UICollectionViewController, ProdsViewProt {
         //Deseleccionar borde
         cell?.layer.borderColor = UIColor.lightGray.cgColor
         cell?.layer.borderWidth = 0.5
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //        if let destination =
     }
     
 }

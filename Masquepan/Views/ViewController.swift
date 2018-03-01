@@ -6,6 +6,10 @@ struct Login: Decodable {
     let idmember: String
 }
 
+struct Products: Decodable {
+    var products: [Product]
+}
+
 class ViewController: UIViewController, OnHttpResponse {
     
     @IBOutlet weak var tfUser: UITextField!
@@ -60,7 +64,7 @@ class ViewController: UIViewController, OnHttpResponse {
         default:
             print("Error at switch")
         }
-        //                performSegue(withIdentifier: "SegueLoginToHome", sender: self)
+        performSegue(withIdentifier: "SegueLoginToHome", sender: self)
         
     }
     
@@ -120,7 +124,7 @@ class ViewController: UIViewController, OnHttpResponse {
     
     func saveProducts(_ data: Data){
         do {
-            products = try JSONDecoder().decode([Product].self, from: data)
+            let products = try JSONDecoder().decode(Products.self, from: data)
             print(products)
         } catch {
             print("Error products")

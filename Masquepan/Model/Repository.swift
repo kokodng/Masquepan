@@ -18,9 +18,9 @@ class Repository : RepoProt{
      */
     func get() -> [Product] {
         return [
-            Product("1", "0", "barra granada", 0.46, "Barra de pan en horno de piedra"),
-            Product("2", "2", "napolitana", 0.86, "Bollo relleno de chocolate con las puntas mojadas en choco"),
-            Product("3", "1", "chapata", 1.86, "1 kg de pan delicioso pan")
+            Product("1", "0", "barra granada", "0.46", "Barra de pan en horno de piedra"),
+            Product("2", "2", "napolitana", "0.86", "Bollo relleno de chocolate con las puntas mojadas en choco"),
+            Product("3", "1", "chapata", "1.86", "1 kg de pan delicioso pan")
         ]
     }
     
