@@ -6,12 +6,28 @@ struct Login: Decodable {
     let idmember: String
 }
 
-struct Products: Decodable {
+class Products: Decodable {
     var products: [Product]
+    
+    init() {
+        self.products = []
+    }
 }
 
-struct Tickets: Decodable {
+class Tickets: Decodable {
     var tickets: [Ticket]
+    
+    init() {
+        self.tickets = []
+    }
+}
+
+class TicketsDetails: Decodable {
+    var ticketsdetails: [TicketDetail]
+    
+    init() {
+        self.ticketsdetails = []
+    }
 }
 
 class ViewController: UIViewController, OnHttpResponse {
@@ -21,10 +37,12 @@ class ViewController: UIViewController, OnHttpResponse {
     @IBOutlet weak var lbMessage: UILabel!
     
     var response: [String:Any] = [:]
-    var state : String = "login";
-    var login : Login = Login(ok: 0, token: "",idmember: "")
-    var products : [Product] = []
-    var productImages : [UIImage] = []
+    var state: String = "login";
+    var productImages: [UIImage] = []
+    var login: Login = Login(ok: 0, token: "",idmember: "")
+    var myProducts: Products = Products()
+    var myTickets: Tickets = Tickets()
+    var myTicketsDetails: TicketsDetails = TicketsDetails()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +86,11 @@ class ViewController: UIViewController, OnHttpResponse {
             break
         case "tickets":
             saveTickets(data)
+            self.state = "ticketsdetails"
+            downloadTicketsDetails()
+            break
+        case "ticketsdetails":
+            saveTicketsDetails(data)
             break
         default:
             print("Error at switch")
@@ -88,7 +111,7 @@ class ViewController: UIViewController, OnHttpResponse {
         let baseUrl = "https://ios-javierrodrigueziturriaga.c9users.io/img/"
         
         DispatchQueue.global().async {
-            for product in self.products {
+            for product in self.myProducts.products {
                 let id = String(describing: product.id);
                 let url = "\(baseUrl)" + id + ".jpg"
                 let data = try? Data(contentsOf: URL(string: url)!)
@@ -98,7 +121,7 @@ class ViewController: UIViewController, OnHttpResponse {
                         return
                     }
                     self.productImages.append(img)
-                    if self.products.count == self.productImages.count{
+                    if self.myProducts.products.count == self.productImages.count{
                         
                     }
                 }
@@ -131,8 +154,8 @@ class ViewController: UIViewController, OnHttpResponse {
     
     func saveProducts(_ data: Data){
         do {
-            let products = try JSONDecoder().decode(Products.self, from: data)
-            print(products)
+            myProducts = try JSONDecoder().decode(Products.self, from: data)
+            print(myProducts.products[0].description)
         } catch {
             print("Error products")
         }
@@ -147,10 +170,26 @@ class ViewController: UIViewController, OnHttpResponse {
     
     func saveTickets(_ data: Data){
         do {
-            let tickets = try JSONDecoder().decode(Tickets.self, from: data)
-            print(tickets)
+            myTickets = try JSONDecoder().decode(Tickets.self, from: data)
+            print(myTickets.tickets[0].date)
         } catch {
             print("Error tickets")
+        }
+    }
+    
+    func downloadTicketsDetails(){
+        guard let cliente = ClienteHttp(target: "ticketsdetails", authorization: "Bearer " + self.login.token, responseObject: self) else {
+            return
+        }
+        cliente.request()
+    }
+    
+    func saveTicketsDetails(_ data: Data){
+        do {
+            myTicketsDetails = try JSONDecoder().decode(TicketsDetails.self, from: data)
+            print(myTicketsDetails.ticketsdetails[0].price)
+        } catch {
+            print("Error ticketsdetails")
         }
     }
     
