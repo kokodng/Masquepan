@@ -114,7 +114,7 @@
                             <outlet property="delegate" destination="2N4-gd-rRE" id="Pbg-IC-rem"/>
                         </connections>
                     </collectionView>
-                    <tabBarItem key="tabBarItem" title="Productos" id="qKt-o5-I54"/>
+                    <tabBarItem key="tabBarItem" title="Productos" image="file-list-tick-7" id="qKt-o5-I54"/>
                     <connections>
                         <outlet property="collectionViewProds" destination="mVz-YU-a8A" id="xA0-oT-dn7"/>
                     </connections>
@@ -141,4 +141,7 @@
             <point key="canvasLocation" x="1068" y="134"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="file-list-tick-7" width="30" height="30"/>
+    </resources>
 </document>
