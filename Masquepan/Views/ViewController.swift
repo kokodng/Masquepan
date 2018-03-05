@@ -105,7 +105,7 @@ class ViewController: UIViewController, OnHttpResponse {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? UITabBarController{
-            if let destinationViewController = destination.viewControllers![0] as! ProdsCollectionVC {
+            if let destinationViewController = destination.viewControllers![0] as? ProdsCollectionVC {
                 destinationViewController.products = self.myProducts.products
                 destinationViewController.productImages = self.productImages
             }
