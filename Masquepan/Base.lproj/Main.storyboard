@@ -154,20 +154,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SDo-Jj-Rog">
-                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem id="LIw-Sq-Q9U">
-                                        <barButtonItem key="leftBarButtonItem" title="&lt; Volver" id="nvu-gn-V0d">
-                                            <connections>
-                                                <action selector="backToProductViewController:" destination="ZD3-n7-WhA" id="7kE-q3-idq"/>
-                                                <segue destination="14Z-dO-YcE" kind="unwind" unwindAction="fromProductCollectionViewController:" id="cPu-op-hC6"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2fE-i4-ntZ">
                                 <rect key="frame" x="67" y="166" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -212,7 +198,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="bbi-Ge-Fyl"/>
                     </view>
-                    <navigationItem key="navigationItem" id="8Hy-lu-H7L"/>
+                    <navigationItem key="navigationItem" id="LIw-Sq-Q9U">
+                        <barButtonItem key="leftBarButtonItem" title="&lt; Volver" id="nvu-gn-V0d">
+                            <connections>
+                                <action selector="fromProductCollectionViewController:" destination="ZD3-n7-WhA" id="7zv-hx-W5U"/>
+                                <segue destination="14Z-dO-YcE" kind="unwind" unwindAction="fromProductCollectionViewController:" id="b0U-zg-SAz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="productDescription" destination="0op-d8-9xO" id="P8M-3F-7qP"/>
                         <outlet property="productDescriptionTitle" destination="MQ5-5i-LG7" id="ED6-li-jfY"/>

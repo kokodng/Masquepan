@@ -16,9 +16,9 @@ class ProductDetailViewController: UIViewController {
     @IBOutlet weak var productDescription: UITextView!
     @IBOutlet weak var productPrice: UILabel!
     
-    @IBAction func fromProductCollectionViewController(_ segue: UIStoryboardSegue) {
-        // unwind segue para recoger los datos
-    }
+//    @IBAction func fromProductCollectionViewController(_ segue: UIStoryboardSegue) {
+//         unwind segue para recoger los datos
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

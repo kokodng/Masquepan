@@ -104,6 +104,10 @@ class ProdsCollectionVC: UICollectionViewController, ProdsViewProt {
         cell?.layer.borderWidth = 2
     }
     
+    @IBAction func fromProductCollectionViewController(_ segue: UIStoryboardSegue) {
+        // unwind segue para recoger los datos
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
         
