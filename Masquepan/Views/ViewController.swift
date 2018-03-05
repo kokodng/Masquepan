@@ -77,7 +77,9 @@ class ViewController: UIViewController, OnHttpResponse {
         switch(self.state){
         case "login":
             self.checkLogin(data: data)
-            downloadProducts()
+            if self.state == "products" {
+                downloadProducts()
+            }
             break
         case "products":
             saveProducts(data)
@@ -91,12 +93,11 @@ class ViewController: UIViewController, OnHttpResponse {
             break
         case "ticketsdetails":
             saveTicketsDetails(data)
+            performSegue(withIdentifier: "SegueLoginToHome", sender: self)
             break
         default:
-            print("Error at switch")
+            print("Switch case default")
         }
-        performSegue(withIdentifier: "SegueLoginToHome", sender: self)
-        
     }
     
     func onErrorReceivingData(message: String) {
