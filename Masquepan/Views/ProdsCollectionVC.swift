@@ -10,18 +10,14 @@ import UIKit
 
 private let reuseIdentifier = "ProdCell"
 
-class ProdsCollectionVC: UICollectionViewController, ProdsViewProt {
+class ProdsCollectionVC: UICollectionViewController {
     
-    let presenter = ProdListPresenter()
+    var productSeg = Product()
+    var imgSeg = UIImage()
+    
     var products : [Product] = []
     var productImages : [UIImage] = []
     // Receive prods data as a array of Products
-    func setProds(_ prods: [Product], _ prodsImgs : [UIImage]) {
-        products = prods;
-        productImages = prodsImgs
-        collectionViewProds.reloadData()
-    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,10 +25,9 @@ class ProdsCollectionVC: UICollectionViewController, ProdsViewProt {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
-        presenter.attachView(viewC: self)
+        
         collectionViewProds.dataSource = self
         collectionViewProds.delegate = self
-        presenter.allProds()
         
         let layout = self.collectionViewProds.collectionViewLayout as! UICollectionViewFlowLayout
         collectionViewProds.contentInset = UIEdgeInsets(top: 25, left: 30, bottom: 30, right: 30)
@@ -84,6 +79,20 @@ class ProdsCollectionVC: UICollectionViewController, ProdsViewProt {
         return cell
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        if segue.identifier == "segueCollectionToDetail" {
+            if let navigationDestination = segue.destination as? UINavigationController{
+                if let destino = navigationDestination.topViewController as? ProductDetailViewController {
+                    print(productSeg.product)
+                    destino.productseg = self.productSeg
+                    destino.prodImg = self.imgSeg
+                }
+            }
+        }
+
+    }
+    
     // MARK: UICollectionViewDelegate
 
     
@@ -91,17 +100,13 @@ class ProdsCollectionVC: UICollectionViewController, ProdsViewProt {
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
         return true
     }
-    
+
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath)
-        // Perform segue
+
+        self.productSeg = products[indexPath.row]
+        self.imgSeg = productImages[indexPath.row]
         
-         performSegue(withIdentifier: "segueCollectionToDetail", sender: self)
-        
-        
-        //Borde de selección
-        cell?.layer.borderColor = UIColor.gray.cgColor
-        cell?.layer.borderWidth = 2
+        performSegue(withIdentifier: "segueCollectionToDetail", sender: self)
     }
     
     @IBAction func fromProductCollectionViewController(_ segue: UIStoryboardSegue) {
@@ -114,10 +119,6 @@ class ProdsCollectionVC: UICollectionViewController, ProdsViewProt {
         //Deseleccionar borde
         cell?.layer.borderColor = UIColor.lightGray.cgColor
         cell?.layer.borderWidth = 0.5
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //        if let destination =
     }
     
 }

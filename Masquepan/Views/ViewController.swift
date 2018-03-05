@@ -83,8 +83,7 @@ class ViewController: UIViewController, OnHttpResponse {
             break
         case "products":
             saveProducts(data)
-            self.state = "tickets"
-            downloadTickets()
+            downloadProdsImgs()
             break
         case "tickets":
             saveTickets(data)
@@ -105,7 +104,11 @@ class ViewController: UIViewController, OnHttpResponse {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let destination = 
+        if let destination = segue.destination as? UITabBarController{
+            let destinationViewController = destination.viewControllers![0] as! ProdsCollectionVC
+            destinationViewController.products = self.myProducts.products
+            destinationViewController.productImages = self.productImages
+        }
     }
     
     func downloadProdsImgs(){
@@ -123,7 +126,9 @@ class ViewController: UIViewController, OnHttpResponse {
                     }
                     self.productImages.append(img)
                     if self.myProducts.products.count == self.productImages.count{
-                        
+                        print("imagenes descargadas")
+                        self.state = "tickets"
+                        self.downloadTickets()
                     }
                 }
             }
@@ -156,7 +161,7 @@ class ViewController: UIViewController, OnHttpResponse {
     func saveProducts(_ data: Data){
         do {
             myProducts = try JSONDecoder().decode(Products.self, from: data)
-            print(myProducts.products[0].description)
+            print(myProducts.products)
         } catch {
             print("Error products")
         }
