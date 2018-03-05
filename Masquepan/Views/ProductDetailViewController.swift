@@ -10,6 +10,8 @@ import UIKit
 
 class ProductDetailViewController: UIViewController {
     
+    var productseg = Product()
+    var prodImg =  UIImage()
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var productDescriptionTitle: UILabel!
@@ -21,17 +23,13 @@ class ProductDetailViewController: UIViewController {
 //    }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-
-        let url = URL(string: "https://ios-javierrodrigueziturriaga.c9users.io/img/1.jpg")
-        
-        DispatchQueue.global().async {
-            let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-            DispatchQueue.main.async {
-                self.productImage.image = UIImage(data: data!)
-            }
-        }
-        
+        productImage.image = prodImg
+        print("\(productseg.product)")
+        productName.text = productseg.product
+        productDescription.text = productseg.description
+        productPrice.text = productseg.price
     }
 
     override func didReceiveMemoryWarning() {
