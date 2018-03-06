@@ -128,7 +128,6 @@ class ViewController: UIViewController, OnHttpResponse {
                     }
                     self.productImages.append(img)
                     if self.myProducts.products.count == self.productImages.count{
-                        print("imagenes descargadas")
                         self.state = "tickets"
                         self.downloadTickets()
                     }
@@ -142,14 +141,10 @@ class ViewController: UIViewController, OnHttpResponse {
             login = try JSONDecoder().decode(Login.self, from: data)
             if login.ok == 1 {
                 self.state = "products"
-                print("login ok!")
-            } else {
-                lbMessage.text = "Credenciales no válidos"
-                print("Invalid login")
             }
         } catch {
             lbMessage.text = "Credenciales no válidos"
-            print("Error login")
+            print("Error decoding login json")
         }
     }
     
@@ -163,9 +158,8 @@ class ViewController: UIViewController, OnHttpResponse {
     func saveProducts(_ data: Data){
         do {
             myProducts = try JSONDecoder().decode(Products.self, from: data)
-            print(myProducts.products)
         } catch {
-            print("Error products")
+            print("Error decoding products json")
         }
     }
     
@@ -179,9 +173,8 @@ class ViewController: UIViewController, OnHttpResponse {
     func saveTickets(_ data: Data){
         do {
             myTickets = try JSONDecoder().decode(Tickets.self, from: data)
-            print(myTickets.tickets[0].date)
         } catch {
-            print("Error tickets")
+            print("Error decoding tickets json")
         }
     }
     
@@ -195,9 +188,8 @@ class ViewController: UIViewController, OnHttpResponse {
     func saveTicketsDetails(_ data: Data){
         do {
             myTicketsDetails = try JSONDecoder().decode(TicketsDetails.self, from: data)
-            print(myTicketsDetails.ticketsdetails[0].price)
         } catch {
-            print("Error ticketsdetails")
+            print("Error decoding ticketsdetails json")
         }
     }
     

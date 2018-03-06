@@ -1,11 +1,3 @@
-//
-//  SalesTableViewController.swift
-//  Masquepan
-//
-//  Created by dam on 06/03/2018.
-//  Copyright © 2018 dam. All rights reserved.
-//
-
 import UIKit
 
 class SalesTableViewController: UITableViewController {

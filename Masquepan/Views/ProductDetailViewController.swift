@@ -1,11 +1,3 @@
-//
-//  ProductDetailViewController.swift
-//  Masquepan
-//
-//  Created by dam on 22/02/2018.
-//  Copyright © 2018 dam. All rights reserved.
-//
-
 import UIKit
 
 let ticketDetail = TicketDetail()

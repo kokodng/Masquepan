@@ -1,11 +1,3 @@
-//
-//  CollectionViewController.swift
-//  Masquepan
-//
-//  Created by dam on 22/2/18.
-//  Copyright © 2018 dam. All rights reserved.
-//
-
 import UIKit
 
 private let reuseIdentifier = "ProdCell"
@@ -17,7 +9,6 @@ class ProdsCollectionVC: UICollectionViewController {
     
     var products : [Product] = []
     var productImages : [UIImage] = []
-    // Receive prods data as a array of Products
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +16,6 @@ class ProdsCollectionVC: UICollectionViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
-        
         collectionViewProds.dataSource = self
         collectionViewProds.delegate = self
         
@@ -57,7 +47,6 @@ class ProdsCollectionVC: UICollectionViewController {
         return 1
     }
 
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
         return self.products.count
@@ -71,26 +60,22 @@ class ProdsCollectionVC: UICollectionViewController {
         
         //Asigna el contenido al label de la celda
         cell.lblProduct.text = products[indexPath.item].product
+        
         //Asigna las imagenes al imageView de la celda
         cell.imgProduct.image = productImages[indexPath.item]
-        // Configure the cell
-        print("cell lbl : " + String(describing: cell.lblProduct.text))
     
         return cell
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
         if segue.identifier == "segueCollectionToDetail" {
             if let navigationDestination = segue.destination as? UINavigationController{
                 if let destino = navigationDestination.topViewController as? ProductDetailViewController {
-                    print(productSeg.product)
                     destino.productseg = self.productSeg
                     destino.prodImg = self.imgSeg
                 }
             }
         }
-
     }
     
     // MARK: UICollectionViewDelegate
@@ -102,10 +87,8 @@ class ProdsCollectionVC: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
         self.productSeg = products[indexPath.row]
         self.imgSeg = productImages[indexPath.row]
-        
         performSegue(withIdentifier: "segueCollectionToDetail", sender: self)
     }
     
