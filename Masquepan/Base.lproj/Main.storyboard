@@ -210,6 +210,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="pickerView" destination="5Wb-ip-J7U" id="YFV-Iw-BUS"/>
                         <outlet property="productDescription" destination="0op-d8-9xO" id="P8M-3F-7qP"/>
                         <outlet property="productImage" destination="2fE-i4-ntZ" id="A7b-A0-uTu"/>
                         <outlet property="productName" destination="J5f-mE-QCK" id="oye-9a-Gng"/>

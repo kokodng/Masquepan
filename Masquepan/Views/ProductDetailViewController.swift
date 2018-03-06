@@ -8,19 +8,16 @@
 
 import UIKit
 
-class ProductDetailViewController: UIViewController {
+class ProductDetailViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
     var productseg = Product()
     var prodImg =  UIImage()
+    var productQuantity : Int = 0
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var productName: UILabel!
-    @IBOutlet weak var productDescriptionTitle: UILabel!
     @IBOutlet weak var productDescription: UITextView!
     @IBOutlet weak var productPrice: UILabel!
-    
-//    @IBAction func fromProductCollectionViewController(_ segue: UIStoryboardSegue) {
-//         unwind segue para recoger los datos
-//    }
+    @IBOutlet weak var pickerView: UIPickerView!
     
     override func viewDidLoad() {
         
@@ -30,13 +27,33 @@ class ProductDetailViewController: UIViewController {
         productName.text = productseg.product
         productDescription.text = productseg.description
         productPrice.text = productseg.price
+        self.pickerView.delegate = self
+        self.pickerView.dataSource = self
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    // How many individual segments there are
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    // Describes how many rows each segment has
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return 10
+    }
+    // Provides the title for each row in each segment
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return String(row + 1)
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        productQuantity = row + 1
+    }
+    
     /*
     // MARK: - Navigation
 
