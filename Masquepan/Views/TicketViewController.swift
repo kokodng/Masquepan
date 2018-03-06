@@ -25,8 +25,7 @@ class TicketViewController: UIViewController, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TicketTableViewCell", for: indexPath) as! TicketTableViewCell
-        
-        cell.cellLabel.text = ticketWithTicketsDetails.ticketsDetails[indexPath.item].price
+        cell.cellLabel.text = myProducts.products[Int(ticketWithTicketsDetails.ticketsDetails[indexPath.item].idproduct)!].product
         return cell
     }
     
