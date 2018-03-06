@@ -7,31 +7,20 @@ struct Login: Decodable {
 }
 
 class Products: Decodable {
-    var products: [Product]
-    
-    init() {
-        self.products = []
-    }
+    var products = [Product]()
 }
 
 class Tickets: Decodable {
-    var tickets: [Ticket]
-    
-    init() {
-        self.tickets = []
-    }
+    var tickets = [Ticket]()
 }
 
 class TicketsDetails: Decodable {
-    var ticketsdetails: [TicketDetail]
-    
-    init() {
-        self.ticketsdetails = []
-    }
+    var ticketsdetails = [TicketDetail]()
 }
 
-var myTickets: Tickets = Tickets()
-var myTicketsDetails: TicketsDetails = TicketsDetails()
+var myTickets = Tickets()
+var myTicketsDetails = TicketsDetails()
+var ticketWithTicketsDetails = TicketWithTicketsDetails()
 
 class ViewController: UIViewController, OnHttpResponse {
     
@@ -48,6 +37,9 @@ class ViewController: UIViewController, OnHttpResponse {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        ticketWithTicketsDetails.ticket.id = String(myTickets.tickets.count + 1)
+        ticketWithTicketsDetails.ticket.idmember = self.login.idmember
     }
     
     override func didReceiveMemoryWarning() {

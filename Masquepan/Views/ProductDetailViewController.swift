@@ -63,5 +63,7 @@ class ProductDetailViewController: UIViewController, UIPickerViewDataSource, UIP
         ticketDetail.idproduct = productseg.id
         ticketDetail.quantity = String(productQuantity)
         ticketDetail.price = productseg.price
+        
+        ticketWithTicketsDetails.ticketsDetails.append(ticketDetail)
     }
 }
