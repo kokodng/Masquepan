@@ -8,6 +8,8 @@
 
 import UIKit
 
+let ticketDetail = TicketDetail()
+
 class ProductDetailViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
     var productseg = Product()
@@ -20,16 +22,13 @@ class ProductDetailViewController: UIViewController, UIPickerViewDataSource, UIP
     @IBOutlet weak var pickerView: UIPickerView!
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         productImage.image = prodImg
-        print("\(productseg.product)")
         productName.text = productseg.product
         productDescription.text = productseg.description
         productPrice.text = productseg.price
         self.pickerView.delegate = self
         self.pickerView.dataSource = self
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,10 +40,12 @@ class ProductDetailViewController: UIViewController, UIPickerViewDataSource, UIP
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
+    
     // Describes how many rows each segment has
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return 10
     }
+    
     // Provides the title for each row in each segment
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return String(row + 1)
@@ -63,5 +64,12 @@ class ProductDetailViewController: UIViewController, UIPickerViewDataSource, UIP
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    @IBAction func add(_ sender: UIButton) {
+        ticketDetail.id = String(myTicketsDetails.ticketsdetails.count + 1)
+        ticketDetail.idticket = String(myTickets.tickets.count + 1)
+        ticketDetail.idproduct = productseg.id
+        ticketDetail.quantity = String(productQuantity)
+        ticketDetail.price = productseg.price
+    }
 }

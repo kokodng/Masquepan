@@ -30,6 +30,9 @@ class TicketsDetails: Decodable {
     }
 }
 
+var myTickets: Tickets = Tickets()
+var myTicketsDetails: TicketsDetails = TicketsDetails()
+
 class ViewController: UIViewController, OnHttpResponse {
     
     @IBOutlet weak var tfUser: UITextField!
@@ -41,8 +44,6 @@ class ViewController: UIViewController, OnHttpResponse {
     var productImages: [UIImage] = []
     var login: Login = Login(ok: 0, token: "",idmember: "")
     var myProducts: Products = Products()
-    var myTickets: Tickets = Tickets()
-    var myTicketsDetails: TicketsDetails = TicketsDetails()
     
     override func viewDidLoad() {
         super.viewDidLoad()

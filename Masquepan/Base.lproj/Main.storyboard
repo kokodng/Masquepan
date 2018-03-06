@@ -141,6 +141,7 @@
                     <connections>
                         <segue destination="2N4-gd-rRE" kind="relationship" relationship="viewControllers" id="fUa-An-FDX"/>
                         <segue destination="3Bd-af-M7G" kind="relationship" relationship="viewControllers" id="WOH-bx-RU8"/>
+                        <segue destination="j9H-hH-hfP" kind="relationship" relationship="viewControllers" id="k4n-Xr-nAR"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yom-yi-cCt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -196,6 +197,9 @@
                                 <rect key="frame" x="66" y="408" width="242" height="53"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Añadir al ticket"/>
+                                <connections>
+                                    <action selector="add:" destination="ZD3-n7-WhA" eventType="touchUpInside" id="Zpv-ZC-tcS"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -221,6 +225,44 @@
                 <exit id="14Z-dO-YcE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1068" y="1792.353823088456"/>
+        </scene>
+        <!--Ventas-->
+        <scene sceneID="vGe-8d-2Dr">
+            <objects>
+                <tableViewController id="j9H-hH-hfP" customClass="SalesTableViewController" customModule="Masquepan" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="0PU-aX-7qC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <segmentedControl key="tableHeaderView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="kgI-1L-Kts">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Fecha"/>
+                                <segment title="Vendedor"/>
+                                <segment title="Familia"/>
+                            </segments>
+                        </segmentedControl>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Cnx-qb-7n6">
+                                <rect key="frame" x="0.0" y="58" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Cnx-qb-7n6" id="ktc-tC-8g3">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="j9H-hH-hfP" id="maz-35-ejk"/>
+                            <outlet property="delegate" destination="j9H-hH-hfP" id="VHD-wS-Bkf"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Ventas" image="shopping-cart-7" id="bpK-xu-aAk"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EHG-79-qoH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2145" y="969"/>
         </scene>
         <!--Ticket-->
         <scene sceneID="wS3-Rr-4FR">
@@ -343,5 +385,6 @@
     </scenes>
     <resources>
         <image name="file-list-tick-7" width="30" height="30"/>
+        <image name="shopping-cart-7" width="30" height="30"/>
     </resources>
 </document>
