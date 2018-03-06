@@ -1,6 +1,6 @@
-import Foundation
+import UIKit
 
-class TicketDetail: Decodable {
+class TicketDetail: Codable {
     var id: String = ""
     var idticket: String = ""
     var idproduct: String = ""

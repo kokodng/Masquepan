@@ -1,6 +1,6 @@
-import Foundation
+import UIKit
 
-class TicketWithTicketsDetails: Decodable {
+class TicketWithTicketsDetails: Codable {
     var ticket = Ticket()
     var ticketsDetails = [TicketDetail]()
 }

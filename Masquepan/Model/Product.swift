@@ -1,6 +1,6 @@
-import Foundation
+import UIKit
 
-class Product: Decodable {
+class Product: Codable {
     var id: String
     var idfamily: String
     var product: String

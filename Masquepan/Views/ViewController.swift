@@ -1,20 +1,20 @@
 import UIKit
 
-struct Login: Decodable {
+struct Login: Codable {
     let ok: Int
     let token: String
     let idmember: String
 }
 
-class Products: Decodable {
+class Products: Codable {
     var products = [Product]()
 }
 
-class Tickets: Decodable {
+class Tickets: Codable {
     var tickets = [Ticket]()
 }
 
-class TicketsDetails: Decodable {
+class TicketsDetails: Codable {
     var ticketsdetails = [TicketDetail]()
 }
 

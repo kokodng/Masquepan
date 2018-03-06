@@ -1,9 +1,8 @@
 import UIKit
 
-let ticketDetail = TicketDetail()
-
 class ProductDetailViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
+    let ticketDetail = TicketDetail()
     var productseg = Product()
     var prodImg =  UIImage()
     var productQuantity : Int = 0
@@ -58,12 +57,12 @@ class ProductDetailViewController: UIViewController, UIPickerViewDataSource, UIP
     */
     
     @IBAction func add(_ sender: UIButton) {
-        ticketDetail.id = String(myTicketsDetails.ticketsdetails.count + 1)
-        ticketDetail.idticket = String(myTickets.tickets.count + 1)
-        ticketDetail.idproduct = productseg.id
-        ticketDetail.quantity = String(productQuantity)
-        ticketDetail.price = productseg.price
+        self.ticketDetail.id = String(myTicketsDetails.ticketsdetails.count + 1)
+        self.ticketDetail.idticket = String(myTickets.tickets.count + 1)
+        self.ticketDetail.idproduct = productseg.id
+        self.ticketDetail.quantity = String(productQuantity)
+        self.ticketDetail.price = productseg.price
         
-        ticketWithTicketsDetails.ticketsDetails.append(ticketDetail)
+        ticketWithTicketsDetails.ticketsDetails.append(self.ticketDetail)
     }
 }
