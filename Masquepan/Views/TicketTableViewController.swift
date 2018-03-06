@@ -26,16 +26,19 @@ class TicketTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return myTicketsDetails.ticketsdetails.count
+        return ticketWithTicketsDetails.ticketsDetails.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TicketTableViewCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TicketTableViewCell", for: indexPath) as? TicketTableViewCell
 
         // Configure the cell...
+        cell?.productRow.text = "Tarta"
+        cell?.unitsRow.text = "10"
+        cell?.priceRow.text = "20.5"
+        cell?.subtotalRow.text = "40.5"
         
-        
-        return cell
+        return cell!
     }
 
     /*
