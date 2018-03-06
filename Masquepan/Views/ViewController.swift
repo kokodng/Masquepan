@@ -21,6 +21,7 @@ class TicketsDetails: Codable {
 var myTickets = Tickets()
 var myTicketsDetails = TicketsDetails()
 var ticketWithTicketsDetails = TicketWithTicketsDetails()
+var myProducts: Products = Products()
 
 class ViewController: UIViewController, OnHttpResponse {
     
@@ -32,7 +33,6 @@ class ViewController: UIViewController, OnHttpResponse {
     var state: String = "login";
     var productImages: [UIImage] = []
     var login: Login = Login(ok: 0, token: "",idmember: "")
-    var myProducts: Products = Products()
     
     override func viewDidLoad() {
         super.viewDidLoad()

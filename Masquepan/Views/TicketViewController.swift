@@ -3,7 +3,6 @@ import UIKit
 class TicketViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
-    let array = ["a", "b", "c"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,19 +20,20 @@ class TicketViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return array.count
+        return ticketWithTicketsDetails.ticketsDetails.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TicketTableViewCell", for: indexPath) as! TicketTableViewCell
-        cell.cellLabel.text = array[indexPath.item]
-//        cell.productRow.text = array[indexPath.item]
-//        cell.unitsRow.text = array[indexPath.item]
-//        cell.priceRow.text = array[indexPath.item]
-//        cell.subtotalRow.text = array[indexPath.item]
+        
+        cell.cellLabel.text = ticketWithTicketsDetails.ticketsDetails[indexPath.item].price
         return cell
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+
     /*
     // MARK: - Navigation
 
