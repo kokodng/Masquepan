@@ -99,7 +99,7 @@ class ViewController: UIViewController, OnHttpResponse {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? UITabBarController{
             if let destinationViewController = destination.viewControllers![0] as? ProdsCollectionVC {
-                destinationViewController.products = self.myProducts.products
+                destinationViewController.products = myProducts.products
                 destinationViewController.productImages = self.productImages
             }
         }
@@ -109,7 +109,7 @@ class ViewController: UIViewController, OnHttpResponse {
         let baseUrl = "https://ios-javierrodrigueziturriaga.c9users.io/img/"
         
         DispatchQueue.global().async {
-            for product in self.myProducts.products {
+            for product in myProducts.products {
                 let id = String(describing: product.id);
                 let url = "\(baseUrl)" + id + ".jpg"
                 let data = try? Data(contentsOf: URL(string: url)!)
@@ -119,7 +119,7 @@ class ViewController: UIViewController, OnHttpResponse {
                         return
                     }
                     self.productImages.append(img)
-                    if self.myProducts.products.count == self.productImages.count{
+                    if myProducts.products.count == self.productImages.count{
                         self.state = "tickets"
                         self.downloadTickets()
                     }
