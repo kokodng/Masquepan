@@ -3,7 +3,8 @@ import UIKit
 class TicketViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var total: UILabel!
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -25,7 +26,12 @@ class TicketViewController: UIViewController, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TicketTableViewCell", for: indexPath) as! TicketTableViewCell
-        cell.cellLabel.text = myProducts.products[Int(ticketWithTicketsDetails.ticketsDetails[indexPath.item].idproduct)!].product
+        cell.productLabel.text = myProducts.products[Int(ticketWithTicketsDetails.ticketsDetails[indexPath.item].idproduct)! - 1].product
+        let quantity = ticketWithTicketsDetails.ticketsDetails[indexPath.item].quantity
+        let price = ticketWithTicketsDetails.ticketsDetails[indexPath.item].price
+        cell.quantityLabel.text = quantity
+        cell.priceLabel.text = price
+        cell.subtotalLabel.text = String(Double(quantity)! * Double(price)!)
         return cell
     }
     
