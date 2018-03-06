@@ -10,6 +10,7 @@
 		33084B66203EA92F00215A50 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33084B64203EA92F00215A50 /* Product.swift */; };
 		33084B6F203EB26A00215A50 /* ProdCellVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33084B6E203EB26A00215A50 /* ProdCellVC.swift */; };
 		33084B71203EB28500215A50 /* ProdsCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33084B70203EB28500215A50 /* ProdsCollectionVC.swift */; };
+		332FAA05204EBBEF0002FCFE /* TicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332FAA04204EBBEF0002FCFE /* TicketViewController.swift */; };
 		3340DC23204805A50056B903 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3340DC22204805A50056B903 /* Ticket.swift */; };
 		3340DC2720480F750056B903 /* TicketDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3340DC2620480F750056B903 /* TicketDetail.swift */; };
 		338C6DB7204E979900D9789D /* SalesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338C6DB6204E979900D9789D /* SalesTableViewController.swift */; };
@@ -26,7 +27,6 @@
 		33D6591820371101005F1B16 /* RestJsonUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D6591520371101005F1B16 /* RestJsonUtil.swift */; };
 		33D6591920371101005F1B16 /* OnHttpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D6591620371101005F1B16 /* OnHttpResponse.swift */; };
 		33FDE43F2047F364002F0135 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FDE43E2047F364002F0135 /* ProductDetailViewController.swift */; };
-		33FDE4412047F78C002F0135 /* TicketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FDE4402047F78B002F0135 /* TicketTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +50,7 @@
 		33084B64203EA92F00215A50 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		33084B6E203EB26A00215A50 /* ProdCellVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProdCellVC.swift; sourceTree = "<group>"; };
 		33084B70203EB28500215A50 /* ProdsCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProdsCollectionVC.swift; sourceTree = "<group>"; };
+		332FAA04204EBBEF0002FCFE /* TicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketViewController.swift; sourceTree = "<group>"; };
 		3340DC22204805A50056B903 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		3340DC2620480F750056B903 /* TicketDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketDetail.swift; sourceTree = "<group>"; };
 		338C6DB6204E979900D9789D /* SalesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalesTableViewController.swift; sourceTree = "<group>"; };
@@ -72,7 +73,6 @@
 		33D6591520371101005F1B16 /* RestJsonUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestJsonUtil.swift; sourceTree = "<group>"; };
 		33D6591620371101005F1B16 /* OnHttpResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnHttpResponse.swift; sourceTree = "<group>"; };
 		33FDE43E2047F364002F0135 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
-		33FDE4402047F78B002F0135 /* TicketTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,11 +116,11 @@
 			children = (
 				338C6DB6204E979900D9789D /* SalesTableViewController.swift */,
 				33FDE43E2047F364002F0135 /* ProductDetailViewController.swift */,
-				33FDE4402047F78B002F0135 /* TicketTableViewController.swift */,
 				33C5F22D204EAF72008DB67E /* TicketTableViewCell.swift */,
 				33C9EBE42032F97900256E94 /* ViewController.swift */,
 				33084B6E203EB26A00215A50 /* ProdCellVC.swift */,
 				33084B70203EB28500215A50 /* ProdsCollectionVC.swift */,
+				332FAA04204EBBEF0002FCFE /* TicketViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -329,13 +329,13 @@
 				33C9EBE32032F97900256E94 /* AppDelegate.swift in Sources */,
 				3340DC2720480F750056B903 /* TicketDetail.swift in Sources */,
 				33084B66203EA92F00215A50 /* Product.swift in Sources */,
+				332FAA05204EBBEF0002FCFE /* TicketViewController.swift in Sources */,
 				338C6DB7204E979900D9789D /* SalesTableViewController.swift in Sources */,
 				33FDE43F2047F364002F0135 /* ProductDetailViewController.swift in Sources */,
 				3340DC23204805A50056B903 /* Ticket.swift in Sources */,
 				33C5F22C204E9F84008DB67E /* TicketWithTicketsDetails.swift in Sources */,
 				33D6591920371101005F1B16 /* OnHttpResponse.swift in Sources */,
 				33C5F22E204EAF72008DB67E /* TicketTableViewCell.swift in Sources */,
-				33FDE4412047F78C002F0135 /* TicketTableViewController.swift in Sources */,
 				33D6591820371101005F1B16 /* RestJsonUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
