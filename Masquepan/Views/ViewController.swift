@@ -1,9 +1,9 @@
 import UIKit
 
 struct Login: Codable {
-    let ok: Int
-    let token: String
-    let idmember: String
+    var ok: Int
+    var token: String
+    var idmember: String?
 }
 
 class Products: Codable {
@@ -39,7 +39,7 @@ class ViewController: UIViewController, OnHttpResponse {
         // Do any additional setup after loading the view, typically from a nib.
         
         ticketWithTicketsDetails.ticket.id = String(myTickets.tickets.count + 1)
-        ticketWithTicketsDetails.ticket.idmember = self.login.idmember
+        ticketWithTicketsDetails.ticket.idmember = self.login.idmember!
     }
     
     override func didReceiveMemoryWarning() {
@@ -99,6 +99,7 @@ class ViewController: UIViewController, OnHttpResponse {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? UITabBarController{
             if let destinationViewController = destination.viewControllers![0] as? ProdsCollectionVC {
+                destinationViewController.login = self.login
                 destinationViewController.products = myProducts.products
                 destinationViewController.productImages = self.productImages
             }

@@ -6,6 +6,7 @@ class ProdsCollectionVC: UICollectionViewController {
     
     var productSeg = Product()
     var imgSeg = UIImage()
+    var login: Login = Login(ok: 0, token: "",idmember: "")
     
     var products : [Product] = []
     var productImages : [UIImage] = []

@@ -277,7 +277,11 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem id="LTl-g5-a1h">
-                                        <barButtonItem key="rightBarButtonItem" title="Comprar" id="bdx-x6-FRX"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Comprar" id="bdx-x6-FRX">
+                                            <connections>
+                                                <action selector="uploadTicket:" destination="3Bd-af-M7G" id="WbQ-sv-brr"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>

@@ -64,5 +64,7 @@ class ProductDetailViewController: UIViewController, UIPickerViewDataSource, UIP
         let price = Double(productQuantity) * Double(productseg.price)!
         self.ticketDetail.price = String(price)        
         ticketWithTicketsDetails.ticketsDetails.append(self.ticketDetail)
+        
+        self.dismiss(animated: true, completion: nil)
     }
 }
