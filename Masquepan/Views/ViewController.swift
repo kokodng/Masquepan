@@ -1,9 +1,9 @@
 import UIKit
 
 struct Login: Codable {
-    let ok: Int
-    let token: String
-    let idmember: String
+    var ok: Int
+    var token: String
+    var idmember: String?
 }
 
 class Products: Codable {
@@ -22,11 +22,16 @@ class Members: Codable {
     var members = [Member]()
 }
 
+class Families: Codable {
+    var families = [Family]()
+}
+
 var myTickets = Tickets()
 var myTicketsDetails = TicketsDetails()
 var ticketWithTicketsDetails = TicketWithTicketsDetails()
 var myProducts: Products = Products()
 var myMembers: Members = Members()
+var myFamilies: Families = Families()
 
 class ViewController: UIViewController, OnHttpResponse {
     
@@ -44,12 +49,7 @@ class ViewController: UIViewController, OnHttpResponse {
         // Do any additional setup after loading the view, typically from a nib.
         
         ticketWithTicketsDetails.ticket.id = String(myTickets.tickets.count + 1)
-        ticketWithTicketsDetails.ticket.idmember = self.login.idmember
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bakery-background.png")!)
-        
-//        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-//        backgroundImage.image = UIImage(named: "bakery-background.png")
-//        self.view.insertSubview(backgroundImage, at: 0)
+        ticketWithTicketsDetails.ticket.idmember = self.login.idmember!
     }
     
     override func didReceiveMemoryWarning() {
@@ -100,6 +100,11 @@ class ViewController: UIViewController, OnHttpResponse {
             break
         case "members":
             saveMembers(data)
+            self.state = "families"
+            downloadFamilies()
+            break
+        case "families":
+            saveFamilies(data)
             performSegue(withIdentifier: "SegueLoginToHome", sender: self)
             break
         default:
@@ -114,6 +119,7 @@ class ViewController: UIViewController, OnHttpResponse {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? UITabBarController{
             if let destinationViewController = destination.viewControllers![0] as? ProdsCollectionVC {
+                destinationViewController.login = self.login
                 destinationViewController.products = myProducts.products
                 destinationViewController.productImages = self.productImages
             }
@@ -212,6 +218,21 @@ class ViewController: UIViewController, OnHttpResponse {
             myMembers = try JSONDecoder().decode(Members.self, from: data)
         } catch {
             print("Error decoding members json")
+        }
+    }
+    
+    func downloadFamilies() {
+        guard let cliente = ClienteHttp(target: "families", authorization: "Bearer " + self.login.token, responseObject: self) else {
+            return
+        }
+        cliente.request()
+    }
+    
+    func saveFamilies(_ data: Data) {
+        do {
+            myFamilies = try JSONDecoder().decode(Families.self, from: data)
+        } catch {
+            print("Error decoding families json")
         }
     }
     
