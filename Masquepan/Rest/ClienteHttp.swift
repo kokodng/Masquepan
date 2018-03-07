@@ -17,7 +17,7 @@ class ClienteHttp {
     // method - GET, POST, PUT, DELETE
     // en data le pasas un diccionario con los datos que se quieren pasar en el body (los datos de json), any puede ser cualquier valor
     init?(target: String, authorization: String, responseObject: OnHttpResponse,
-          _ method: String = "GET", _ data : Data = Data()) {
+          _ method: String = "GET", _ data : [String:Any] = [:]) {
         guard let url = URL(string: self.urlApi + target) else {
             return nil
         }
@@ -27,7 +27,10 @@ class ClienteHttp {
         self.urlPeticion.addValue("application/json", forHTTPHeaderField: "Content-Type")
         self.urlPeticion.addValue(authorization, forHTTPHeaderField: "Authorization")
         if method != "GET" && data.count > 0 {
-            self.urlPeticion.httpBody = data
+            guard let json = RestJsonUtil.dictToJson(data: data) else {
+                return nil
+            }
+            self.urlPeticion.httpBody = json
         }
         
 
