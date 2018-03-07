@@ -58,7 +58,7 @@ class ProductDetailViewController: UIViewController, UIPickerViewDataSource, UIP
     
     @IBAction func add(_ sender: UIButton) {
         self.ticketDetail.id = String(myTicketsDetails.ticketsdetails.count + 1)
-        self.ticketDetail.idticket = String(myTickets.tickets.count + 1)
+        self.ticketDetail.idticket = String(Int((myTickets.tickets.last?.id)!)! + 1)
         self.ticketDetail.idproduct = productseg.id
         self.ticketDetail.quantity = String(productQuantity)
         let price = Double(productQuantity) * Double(productseg.price)!
