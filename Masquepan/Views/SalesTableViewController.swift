@@ -6,8 +6,11 @@ class SalesTableViewController: UITableViewController {
     
     @IBOutlet weak var tableviewsales: UITableView!
     
+    var ticketSortedByDateDesc = [Ticket]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        ticketSortedByDateDesc = myTickets.tickets.sorted(by: {$0.id > $1.id})
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -26,8 +29,12 @@ class SalesTableViewController: UITableViewController {
         switch controller.selectedSegmentIndex {
         case 0:
             print("Fecha")
+            ticketSortedByDateDesc = myTickets.tickets.sorted(by: {$0.id > $1.id})
+            tableviewsales.reloadData()
         case 1:
             print("Vendedor")
+            ticketSortedByDateDesc = ticketSortedByDateDesc.sorted(by: {$0.idmember < $1.idmember})
+            tableviewsales.reloadData()
         case 2:
             print("Familia")
         default:
@@ -48,10 +55,10 @@ class SalesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableviewsales.dequeueReusableCell(withIdentifier: "SalesTableViewCell", for: indexPath) as! SalesTableViewCell
-        let ticketid = myTickets.tickets[indexPath.item].id
+        let ticketid = ticketSortedByDateDesc[indexPath.item].id
         cell.idticketlabel.text = ticketid
-        cell.dateticketlabel.text = myTickets.tickets[indexPath.item].date
-        cell.memberticketlabel.text = myMembers.members[Int(myTickets.tickets[indexPath.item].idmember)! - 1].login
+        cell.dateticketlabel.text = ticketSortedByDateDesc[indexPath.item].date
+        cell.memberticketlabel.text = myMembers.members[Int(ticketSortedByDateDesc[indexPath.item].idmember)! - 1].login
         return cell
     }
  
