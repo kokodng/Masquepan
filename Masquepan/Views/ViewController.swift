@@ -50,6 +50,11 @@ class ViewController: UIViewController, OnHttpResponse {
         
         ticketWithTicketsDetails.ticket.id = String(myTickets.tickets.count + 1)
         ticketWithTicketsDetails.ticket.idmember = self.login.idmember!
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bakery-background.png")!)
+        
+//        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+//        backgroundImage.image = UIImage(named: "bakery-background.png")
+//        self.view.insertSubview(backgroundImage, at: 0)
     }
     
     override func didReceiveMemoryWarning() {
