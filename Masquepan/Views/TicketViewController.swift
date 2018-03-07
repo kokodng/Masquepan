@@ -3,7 +3,9 @@ import UIKit
 class TicketViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var total: UILabel!
+    @IBOutlet weak var totalLabel: UILabel!
+    
+    var total = 0.0
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,16 +29,18 @@ class TicketViewController: UIViewController, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TicketTableViewCell", for: indexPath) as! TicketTableViewCell
         cell.productLabel.text = myProducts.products[Int(ticketWithTicketsDetails.ticketsDetails[indexPath.item].idproduct)! - 1].product
-        let quantity = ticketWithTicketsDetails.ticketsDetails[indexPath.item].quantity
-        let price = ticketWithTicketsDetails.ticketsDetails[indexPath.item].price
-        cell.quantityLabel.text = quantity
-        cell.priceLabel.text = price
-        cell.subtotalLabel.text = String(Double(quantity)! * Double(price)!)
+        cell.quantityLabel.text = ticketWithTicketsDetails.ticketsDetails[indexPath.item].quantity
+        cell.priceLabel.text = myProducts.products[Int(ticketWithTicketsDetails.ticketsDetails[indexPath.item].idproduct)! - 1].price
+        let subtotal = ticketWithTicketsDetails.ticketsDetails[indexPath.item].price
+        cell.subtotalLabel.text = subtotal
+        total = total + Double(subtotal)!
+        totalLabel.text = String(total)
         return cell
     }
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
+        total = 0.0
     }
 
     /*
