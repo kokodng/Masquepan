@@ -2,9 +2,13 @@ import UIKit
 
 class SalesTableViewController: UITableViewController {
 
+    @IBOutlet weak var controller: UISegmentedControl!
+    
+    @IBOutlet weak var tableviewsales: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tableviewsales.dataSource = self
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -12,32 +16,45 @@ class SalesTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
+  
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func changeViews(_ sender: Any) {
+        switch controller.selectedSegmentIndex {
+        case 0:
+            print("Fecha")
+        case 1:
+            print("Vendedor")
+        case 2:
+            print("Familia")
+        default:
+            break;
+        }
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return ticketWithTicketsDetails.ticketsDetails.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TicketTableViewCell", for: indexPath) as! TicketTableViewCell
+        cell.cellLabel.text = myProducts.products[Int(ticketWithTicketsDetails.ticketsDetails[indexPath.item].idproduct)!].product
         return cell
     }
-    */
+ 
+    override func viewWillAppear(_ animated: Bool) {
+        tableviewsales.reloadData()
+    }
 
     /*
     // Override to support conditional editing of the table view.

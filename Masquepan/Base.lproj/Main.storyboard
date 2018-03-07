@@ -242,6 +242,9 @@
                                 <segment title="Vendedor"/>
                                 <segment title="Familia"/>
                             </segments>
+                            <connections>
+                                <action selector="changeViews:" destination="j9H-hH-hfP" eventType="valueChanged" id="mIR-VH-zsM"/>
+                            </connections>
                         </segmentedControl>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Cnx-qb-7n6">
@@ -250,6 +253,15 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Cnx-qb-7n6" id="ktc-tC-8g3">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a3s-az-bXq">
+                                            <rect key="frame" x="16" y="12" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -259,6 +271,11 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Ventas" image="shopping-cart-7" id="bpK-xu-aAk"/>
+                    <connections>
+                        <outlet property="Controller" destination="kgI-1L-Kts" id="jQr-up-Mlo"/>
+                        <outlet property="controller" destination="kgI-1L-Kts" id="a1J-f3-q2S"/>
+                        <outlet property="tableviewsales" destination="0PU-aX-7qC" id="kaO-lA-SHk"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EHG-79-qoH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
