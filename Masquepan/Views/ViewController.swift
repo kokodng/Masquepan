@@ -18,10 +18,15 @@ class TicketsDetails: Codable {
     var ticketsdetails = [TicketDetail]()
 }
 
+class Members: Codable {
+    var members = [Member]()
+}
+
 var myTickets = Tickets()
 var myTicketsDetails = TicketsDetails()
 var ticketWithTicketsDetails = TicketWithTicketsDetails()
 var myProducts: Products = Products()
+var myMembers: Members = Members()
 
 class ViewController: UIViewController, OnHttpResponse {
     
@@ -85,6 +90,11 @@ class ViewController: UIViewController, OnHttpResponse {
             break
         case "ticketsdetails":
             saveTicketsDetails(data)
+            self.state = "members"
+            downloadMembers()
+            break
+        case "members":
+            saveMembers(data)
             performSegue(withIdentifier: "SegueLoginToHome", sender: self)
             break
         default:
@@ -183,6 +193,21 @@ class ViewController: UIViewController, OnHttpResponse {
             myTicketsDetails = try JSONDecoder().decode(TicketsDetails.self, from: data)
         } catch {
             print("Error decoding ticketsdetails json")
+        }
+    }
+    
+    func downloadMembers() {
+        guard let cliente = ClienteHttp(target: "members", authorization: "Bearer " + self.login.token, responseObject: self) else {
+            return
+        }
+        cliente.request()
+    }
+    
+    func saveMembers(_ data: Data) {
+        do {
+            myMembers = try JSONDecoder().decode(Members.self, from: data)
+        } catch {
+            print("Error decoding members json")
         }
     }
     

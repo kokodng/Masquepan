@@ -29,11 +29,12 @@ class TicketViewController: UIViewController, UITableViewDataSource, OnHttpRespo
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TicketTableViewCell", for: indexPath) as! TicketTableViewCell
         cell.productLabel.text = myProducts.products[Int(ticketWithTicketsDetails.ticketsDetails[indexPath.item].idproduct)! - 1].product
-        let quantity = ticketWithTicketsDetails.ticketsDetails[indexPath.item].quantity
-        let price = ticketWithTicketsDetails.ticketsDetails[indexPath.item].price
-        cell.quantityLabel.text = quantity
-        cell.priceLabel.text = price
-        cell.subtotalLabel.text = String(Double(quantity)! * Double(price)!)
+        cell.quantityLabel.text = ticketWithTicketsDetails.ticketsDetails[indexPath.item].quantity
+        cell.priceLabel.text = myProducts.products[Int(ticketWithTicketsDetails.ticketsDetails[indexPath.item].idproduct)! - 1].price
+        let subtotal = ticketWithTicketsDetails.ticketsDetails[indexPath.item].price
+        cell.subtotalLabel.text = subtotal
+        total = total + Double(subtotal)!
+        totalLabel.text = String(total)
         return cell
     }
     
@@ -42,6 +43,7 @@ class TicketViewController: UIViewController, UITableViewDataSource, OnHttpRespo
         self.login = productsView.login
         ticketWithTicketsDetails.ticket.idmember = login.idmember!
         tableView.reloadData()
+        total = 0.0
     }
 
     /*
