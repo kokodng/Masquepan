@@ -6,11 +6,13 @@ class SalesTableViewController: UITableViewController {
     
     @IBOutlet weak var tableviewsales: UITableView!
     
+    var state : String = "fecha"
+    
     var ticketSortedByDateDesc = [Ticket]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ticketSortedByDateDesc = myTickets.tickets.sorted(by: {$0.id > $1.id})
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -29,10 +31,12 @@ class SalesTableViewController: UITableViewController {
         switch controller.selectedSegmentIndex {
         case 0:
             print("Fecha")
+            state = "fecha"
             ticketSortedByDateDesc = myTickets.tickets.sorted(by: {$0.id > $1.id})
             tableviewsales.reloadData()
         case 1:
             print("Vendedor")
+            state = "vendedor"
             ticketSortedByDateDesc = ticketSortedByDateDesc.sorted(by: {$0.idmember < $1.idmember})
             tableviewsales.reloadData()
         case 2:
@@ -63,6 +67,12 @@ class SalesTableViewController: UITableViewController {
     }
  
     override func viewWillAppear(_ animated: Bool) {
+        
+        if (state == "fecha") {
+            ticketSortedByDateDesc = myTickets.tickets.sorted(by: {$0.id > $1.id})
+        } else if (state == "vendedor"){
+            ticketSortedByDateDesc = ticketSortedByDateDesc.sorted(by: {$0.idmember < $1.idmember})
+        }
         tableviewsales.reloadData()
     }
 

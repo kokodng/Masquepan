@@ -64,8 +64,6 @@ class ProductDetailViewController: UIViewController, UIPickerViewDataSource, UIP
         let price = Double(productQuantity) * Double(productseg.price)!
         self.ticketDetail.price = String(price)        
         ticketWithTicketsDetails.ticketsDetails.append(self.ticketDetail)
-        let parent = self.parent?.parent as! ProdsCollectionVC
-        parent.showToast(msg: "Añadido")
         self.dismiss(animated: true, completion: nil)
     }
 

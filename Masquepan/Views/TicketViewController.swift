@@ -61,7 +61,7 @@ class TicketViewController: UIViewController, UITableViewDataSource, OnHttpRespo
     */
     
     @IBAction func uploadTicket(_ sender: UIBarButtonItem) {
-        print("ok" + login.token)
+        setTicketDate()
         let jsondata =  try? JSONEncoder().encode(ticketWithTicketsDetails.ticket)
         printJson(data : jsondata!)
         guard let cliente = ClienteHttp(target: "tickets", authorization: "Bearer " + self.login.token,responseObject: self,
@@ -109,6 +109,7 @@ class TicketViewController: UIViewController, UITableViewDataSource, OnHttpRespo
                 ticketWithTicketsDetails = TicketWithTicketsDetails()
                 ticketUploaded = false
                 productsView?.showToast(msg: "Ticket guardado")
+                totalLabel.text = "0.0"
                 self.tabBarController?.selectedIndex = 0
             }
         } catch {
@@ -123,4 +124,13 @@ class TicketViewController: UIViewController, UITableViewDataSource, OnHttpRespo
             print("Ticket JSON:\n" + String(describing: json) + "\n")
         }
     }
+    
+    func setTicketDate() {
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let result = formatter.string(from: date)
+        ticketWithTicketsDetails.ticket.date = result
+    }
+    
 }
