@@ -1,6 +1,6 @@
 import UIKit
 
-class TicketViewController: UIViewController, UITableViewDataSource, OnHttpResponse {
+class TicketViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var total: UILabel!
@@ -42,9 +42,6 @@ class TicketViewController: UIViewController, UITableViewDataSource, OnHttpRespo
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let productsView = self.tabBarController?.viewControllers?.first as! ProdsCollectionVC
-        self.login = productsView.login
-        ticketWithTicketsDetails.ticket.idmember = login.idmember!
         tableView.reloadData()
         totalNum = 0.0
     }
@@ -121,6 +118,4 @@ class TicketViewController: UIViewController, UITableViewDataSource, OnHttpRespo
             print("Ticket JSON:\n" + String(describing: json) + "\n")
         }
 
-    }
-    
 }
