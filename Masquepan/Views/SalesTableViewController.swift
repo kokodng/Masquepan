@@ -50,8 +50,8 @@ class SalesTableViewController: UITableViewController {
         let cell = tableviewsales.dequeueReusableCell(withIdentifier: "SalesTableViewCell", for: indexPath) as! SalesTableViewCell
         cell.idticketlabel.text = myTickets.tickets[indexPath.item].id
         cell.dateticketlabel.text = myTickets.tickets[indexPath.item].date
-        cell.memberticketlabel.text = "okok"
-//        cell.familyticketlabel.text = myProducts.products[Int(ticketWithTicketsDetails.ticketsDetails[indexPath.item].idproduct)! - 1].idfamily
+        cell.memberticketlabel.text = myMembers.members[Int(myTickets.tickets[indexPath.item].idmember)! - 1].login
+        cell.familyticketlabel.text = "family"
         return cell
     }
  
