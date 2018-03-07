@@ -8,7 +8,7 @@ class SalesTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableviewsales.dataSource = self
+//        tableviewsales.dataSource = self
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -42,13 +42,16 @@ class SalesTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ticketWithTicketsDetails.ticketsDetails.count
+        return myTickets.tickets.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TicketTableViewCell", for: indexPath) as! TicketTableViewCell
-        cell.cellLabel.text = myProducts.products[Int(ticketWithTicketsDetails.ticketsDetails[indexPath.item].idproduct)!].product
+        let cell = tableviewsales.dequeueReusableCell(withIdentifier: "SalesTableViewCell", for: indexPath) as! SalesTableViewCell
+        cell.idticketlabel.text = myTickets.tickets[indexPath.item].id
+        cell.dateticketlabel.text = myTickets.tickets[indexPath.item].date
+        cell.memberticketlabel.text = "okok"
+        cell.familyticketlabel.text = "family"
         return cell
     }
  
