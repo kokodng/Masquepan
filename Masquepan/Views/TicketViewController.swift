@@ -1,13 +1,14 @@
 import UIKit
 
-class TicketViewController: UIViewController, UITableViewDataSource {
+class TicketViewController: UIViewController, UITableViewDataSource, OnHttpResponse {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var total: UILabel!
+    
     var login: Login = Login(ok: 0, token: "",idmember: "")
     var ticketUploaded = false
     @IBOutlet weak var totalLabel: UILabel!
-        var totalNum = 0.0
+    
+    var total = 0.0
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,14 +37,17 @@ class TicketViewController: UIViewController, UITableViewDataSource {
         cell.priceLabel.text = myProducts.products[Int(ticketWithTicketsDetails.ticketsDetails[indexPath.item].idproduct)! - 1].price
         let subtotal = ticketWithTicketsDetails.ticketsDetails[indexPath.item].price
         cell.subtotalLabel.text = subtotal
-        totalNum = totalNum + Double(subtotal)!
-        totalLabel.text = String(describing: total)
+        total = total + Double(subtotal)!
+        totalLabel.text = String(total)
         return cell
     }
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
-        totalNum = 0.0
+        let productsView = self.tabBarController?.viewControllers?.first as! ProdsCollectionVC
+        self.login = productsView.login
+        ticketWithTicketsDetails.ticket.idmember = login.idmember!
+        total = 0.0
     }
 
     /*
@@ -90,6 +94,7 @@ class TicketViewController: UIViewController, UITableViewDataSource {
     }
     
     func checkLogin(data: Data){
+        print(login.idmember)
         do {
             let loginRec = try JSONDecoder().decode(Login.self, from: data)
             if loginRec.ok == 1 && ticketUploaded == false{
@@ -117,5 +122,5 @@ class TicketViewController: UIViewController, UITableViewDataSource {
         if let json = json {
             print("Ticket JSON:\n" + String(describing: json) + "\n")
         }
-
+    }
 }
