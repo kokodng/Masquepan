@@ -5,7 +5,7 @@ class ProductDetailViewController: UIViewController, UIPickerViewDataSource, UIP
     let ticketDetail = TicketDetail()
     var productseg = Product()
     var prodImg =  UIImage()
-    var productQuantity : Int = 0
+    var productQuantity : Int = 1
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var productDescription: UITextView!
@@ -61,8 +61,8 @@ class ProductDetailViewController: UIViewController, UIPickerViewDataSource, UIP
         self.ticketDetail.idticket = String(myTickets.tickets.count + 1)
         self.ticketDetail.idproduct = productseg.id
         self.ticketDetail.quantity = String(productQuantity)
-        self.ticketDetail.price = productseg.price
-        
+        let price = Double(productQuantity) * Double(productseg.price)!
+        self.ticketDetail.price = String(price)        
         ticketWithTicketsDetails.ticketsDetails.append(self.ticketDetail)
     }
 }
