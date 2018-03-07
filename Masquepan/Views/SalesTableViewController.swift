@@ -8,7 +8,7 @@ class SalesTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        tableviewsales.dataSource = self
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -51,7 +51,7 @@ class SalesTableViewController: UITableViewController {
         cell.idticketlabel.text = myTickets.tickets[indexPath.item].id
         cell.dateticketlabel.text = myTickets.tickets[indexPath.item].date
         cell.memberticketlabel.text = "okok"
-        cell.familyticketlabel.text = "family"
+//        cell.familyticketlabel.text = myProducts.products[Int(ticketWithTicketsDetails.ticketsDetails[indexPath.item].idproduct)! - 1].idfamily
         return cell
     }
  
