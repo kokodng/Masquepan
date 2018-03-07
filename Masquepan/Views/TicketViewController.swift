@@ -66,7 +66,7 @@ class TicketViewController: UIViewController, UITableViewDataSource, OnHttpRespo
     }
     
     func uploadTicketDetails(){
-        var ticketdetailsUp = TicketsDetails()
+        let ticketdetailsUp = TicketsDetails()
         ticketdetailsUp.ticketsdetails = ticketWithTicketsDetails.ticketsDetails
         let jsondata =  try? JSONEncoder().encode(ticketdetailsUp)
         
@@ -93,7 +93,8 @@ class TicketViewController: UIViewController, UITableViewDataSource, OnHttpRespo
             if loginRec.ok == 1 && ticketUploaded == false{
                 self.login.ok = 1
                 self.login.token = loginRec.token
-                print(login.token)
+                ticketWithTicketsDetails.ticket.id = ticketWithTicketsDetails.ticketsDetails[0].idticket
+                myTickets.tickets.append(ticketWithTicketsDetails.ticket)
                 uploadTicketDetails()
                 ticketUploaded = true
             } else if loginRec.ok == 1 && ticketUploaded == true{
