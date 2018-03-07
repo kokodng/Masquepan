@@ -12,7 +12,6 @@ class SalesTableViewCell: UITableViewCell {
     @IBOutlet weak var idticketlabel: UILabel!
     @IBOutlet weak var dateticketlabel: UILabel!
     @IBOutlet weak var memberticketlabel: UILabel!
-    @IBOutlet weak var familyticketlabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

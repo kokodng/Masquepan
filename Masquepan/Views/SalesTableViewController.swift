@@ -48,10 +48,10 @@ class SalesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableviewsales.dequeueReusableCell(withIdentifier: "SalesTableViewCell", for: indexPath) as! SalesTableViewCell
-        cell.idticketlabel.text = myTickets.tickets[indexPath.item].id
+        let ticketid = myTickets.tickets[indexPath.item].id
+        cell.idticketlabel.text = ticketid
         cell.dateticketlabel.text = myTickets.tickets[indexPath.item].date
         cell.memberticketlabel.text = myMembers.members[Int(myTickets.tickets[indexPath.item].idmember)! - 1].login
-        cell.familyticketlabel.text = "family"
         return cell
     }
  

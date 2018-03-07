@@ -15,6 +15,7 @@
 		3340DC2720480F750056B903 /* TicketDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3340DC2620480F750056B903 /* TicketDetail.swift */; };
 		338C6DB7204E979900D9789D /* SalesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338C6DB6204E979900D9789D /* SalesTableViewController.swift */; };
 		339DA05E204FE5F90094D8D4 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339DA05D204FE5F90094D8D4 /* Member.swift */; };
+		339DA060204FF1150094D8D4 /* Family.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339DA05F204FF1150094D8D4 /* Family.swift */; };
 		33C5F22C204E9F84008DB67E /* TicketWithTicketsDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C5F22B204E9F84008DB67E /* TicketWithTicketsDetails.swift */; };
 		33C5F22E204EAF72008DB67E /* TicketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C5F22D204EAF72008DB67E /* TicketTableViewCell.swift */; };
 		33C9EBE32032F97900256E94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C9EBE22032F97900256E94 /* AppDelegate.swift */; };
@@ -57,6 +58,7 @@
 		3340DC2620480F750056B903 /* TicketDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketDetail.swift; sourceTree = "<group>"; };
 		338C6DB6204E979900D9789D /* SalesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalesTableViewController.swift; sourceTree = "<group>"; };
 		339DA05D204FE5F90094D8D4 /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
+		339DA05F204FF1150094D8D4 /* Family.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Family.swift; sourceTree = "<group>"; };
 		33C5F22B204E9F84008DB67E /* TicketWithTicketsDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketWithTicketsDetails.swift; sourceTree = "<group>"; };
 		33C5F22D204EAF72008DB67E /* TicketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketTableViewCell.swift; sourceTree = "<group>"; };
 		33C9EBDF2032F97900256E94 /* Masquepan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Masquepan.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,6 +114,7 @@
 				3340DC2620480F750056B903 /* TicketDetail.swift */,
 				33C5F22B204E9F84008DB67E /* TicketWithTicketsDetails.swift */,
 				339DA05D204FE5F90094D8D4 /* Member.swift */,
+				339DA05F204FF1150094D8D4 /* Family.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 				332FAA05204EBBEF0002FCFE /* TicketViewController.swift in Sources */,
 				338C6DB7204E979900D9789D /* SalesTableViewController.swift in Sources */,
 				33FDE43F2047F364002F0135 /* ProductDetailViewController.swift in Sources */,
+				339DA060204FF1150094D8D4 /* Family.swift in Sources */,
 				3340DC23204805A50056B903 /* Ticket.swift in Sources */,
 				33C5F22C204E9F84008DB67E /* TicketWithTicketsDetails.swift in Sources */,
 				33D6591920371101005F1B16 /* OnHttpResponse.swift in Sources */,
