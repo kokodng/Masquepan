@@ -65,8 +65,8 @@ class ProductDetailViewController: UIViewController, UIPickerViewDataSource, UIP
         self.ticketDetail.price = String(price)        
         ticketWithTicketsDetails.ticketsDetails.append(self.ticketDetail)
         self.toastView(messsage: "Añadido " + self.ticketDetail.quantity + " " + productName.text!, view: self.view)
-
     }
+    
       func toastView(messsage : String, view: UIView ){
         let toastLabel = UILabel(frame: CGRect(x: view.frame.size.width/2 - 150, y: view.frame.size.height-100, width: 300,  height : 35))
         toastLabel.backgroundColor = UIColor.orange
@@ -79,8 +79,6 @@ class ProductDetailViewController: UIViewController, UIPickerViewDataSource, UIP
         toastLabel.clipsToBounds  =  true
         UIView.animate(withDuration: 4.0, delay: 0.1, options: UIViewAnimationOptions.curveEaseOut, animations: {
             toastLabel.alpha = 0.0
-            
         })
     }
-    
 }

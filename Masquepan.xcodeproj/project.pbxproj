@@ -28,6 +28,7 @@
 		33D6591820371101005F1B16 /* RestJsonUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D6591520371101005F1B16 /* RestJsonUtil.swift */; };
 		33D6591920371101005F1B16 /* OnHttpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D6591620371101005F1B16 /* OnHttpResponse.swift */; };
 		33D6963B204FDAC30061997B /* SalesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D6963A204FDAC30061997B /* SalesTableViewCell.swift */; };
+		33D6963D205007D80061997B /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D6963C205007D80061997B /* Toast.swift */; };
 		33FDE43F2047F364002F0135 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FDE43E2047F364002F0135 /* ProductDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +77,7 @@
 		33D6591520371101005F1B16 /* RestJsonUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestJsonUtil.swift; sourceTree = "<group>"; };
 		33D6591620371101005F1B16 /* OnHttpResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnHttpResponse.swift; sourceTree = "<group>"; };
 		33D6963A204FDAC30061997B /* SalesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalesTableViewCell.swift; sourceTree = "<group>"; };
+		33D6963C205007D80061997B /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		33FDE43E2047F364002F0135 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,6 +129,7 @@
 				33084B6E203EB26A00215A50 /* ProdCellVC.swift */,
 				33084B70203EB28500215A50 /* ProdsCollectionVC.swift */,
 				332FAA04204EBBEF0002FCFE /* TicketViewController.swift */,
+				33D6963C205007D80061997B /* Toast.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				33C9EBE32032F97900256E94 /* AppDelegate.swift in Sources */,
 				3340DC2720480F750056B903 /* TicketDetail.swift in Sources */,
 				33084B66203EA92F00215A50 /* Product.swift in Sources */,
+				33D6963D205007D80061997B /* Toast.swift in Sources */,
 				339DA05E204FE5F90094D8D4 /* Member.swift in Sources */,
 				332FAA05204EBBEF0002FCFE /* TicketViewController.swift in Sources */,
 				338C6DB7204E979900D9789D /* SalesTableViewController.swift in Sources */,
