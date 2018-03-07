@@ -3,7 +3,7 @@ import UIKit
 class TicketViewController: UIViewController, UITableViewDataSource, OnHttpResponse {
     
     @IBOutlet weak var tableView: UITableView!
-    
+    var productsView : ProdsCollectionVC?
     var login: Login = Login(ok: 0, token: "",idmember: "")
     var ticketUploaded = false
     @IBOutlet weak var totalLabel: UILabel!
@@ -44,8 +44,8 @@ class TicketViewController: UIViewController, UITableViewDataSource, OnHttpRespo
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
-        let productsView = self.tabBarController?.viewControllers?.first as! ProdsCollectionVC
-        self.login = productsView.login
+        productsView = self.tabBarController?.viewControllers?.first as? ProdsCollectionVC
+        self.login = (productsView?.login)!
         ticketWithTicketsDetails.ticket.idmember = login.idmember!
         total = 0.0
     }
@@ -94,7 +94,6 @@ class TicketViewController: UIViewController, UITableViewDataSource, OnHttpRespo
     }
     
     func checkLogin(data: Data){
-        print(login.idmember)
         do {
             let loginRec = try JSONDecoder().decode(Login.self, from: data)
             if loginRec.ok == 1 && ticketUploaded == false{
@@ -109,6 +108,7 @@ class TicketViewController: UIViewController, UITableViewDataSource, OnHttpRespo
                 print(loginRec.ok)
                 ticketWithTicketsDetails = TicketWithTicketsDetails()
                 ticketUploaded = false
+                productsView?.showToast(msg: "Ticket guardado")
                 self.tabBarController?.selectedIndex = 0
             }
         } catch {

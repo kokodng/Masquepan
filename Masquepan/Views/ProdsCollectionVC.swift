@@ -105,4 +105,9 @@ class ProdsCollectionVC: UICollectionViewController {
         cell?.layer.borderWidth = 0.5
     }
     
+    func showToast(msg : String){
+        let feedback = Toast()
+        feedback.toastView(messsage: msg, view: self.view)
+    }
+    
 }

@@ -27,6 +27,7 @@ class ClienteHttp {
         self.urlPeticion.addValue("application/json", forHTTPHeaderField: "Content-Type")
         self.urlPeticion.addValue(authorization, forHTTPHeaderField: "Authorization")
         if method != "GET" && data.count > 0 {
+            
             self.urlPeticion.httpBody = data
         }
         
