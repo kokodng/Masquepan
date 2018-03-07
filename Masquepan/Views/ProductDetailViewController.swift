@@ -66,5 +66,7 @@ class ProductDetailViewController: UIViewController, UIPickerViewDataSource, UIP
         ticketWithTicketsDetails.ticketsDetails.append(self.ticketDetail)
         let toast = Toast()
         toast.toastView(messsage: "Añadido " + self.ticketDetail.quantity + " " + productName.text!, view: self.view)
+        self.dismiss(animated: true, completion: nil)
     }
+    
 }
