@@ -6,11 +6,14 @@ class TicketViewController: UIViewController, UITableViewDataSource, OnHttpRespo
     @IBOutlet weak var total: UILabel!
     var login: Login = Login(ok: 0, token: "",idmember: "")
     var ticketUploaded = false
+    @IBOutlet weak var totalLabel: UILabel!
+        var totalNum = 0.0
         
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         tableView.dataSource = self
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,8 +36,8 @@ class TicketViewController: UIViewController, UITableViewDataSource, OnHttpRespo
         cell.priceLabel.text = myProducts.products[Int(ticketWithTicketsDetails.ticketsDetails[indexPath.item].idproduct)! - 1].price
         let subtotal = ticketWithTicketsDetails.ticketsDetails[indexPath.item].price
         cell.subtotalLabel.text = subtotal
-        total = total + Double(subtotal)!
-        totalLabel.text = String(total)
+        totalNum = totalNum + Double(subtotal)!
+        totalLabel.text = String(describing: total)
         return cell
     }
     
@@ -43,7 +46,7 @@ class TicketViewController: UIViewController, UITableViewDataSource, OnHttpRespo
         self.login = productsView.login
         ticketWithTicketsDetails.ticket.idmember = login.idmember!
         tableView.reloadData()
-        total = 0.0
+        totalNum = 0.0
     }
 
     /*
@@ -102,7 +105,9 @@ class TicketViewController: UIViewController, UITableViewDataSource, OnHttpRespo
             } else if loginRec.ok == 1 && ticketUploaded == true{
                 print("Ticket completo subido ")
                 print(loginRec.ok)
+                ticketWithTicketsDetails = TicketWithTicketsDetails()
                 ticketUploaded = false
+                self.tabBarController?.selectedIndex = 0
             }
         } catch {
             print("Error decoding login json")
