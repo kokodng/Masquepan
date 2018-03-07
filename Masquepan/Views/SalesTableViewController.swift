@@ -8,7 +8,7 @@ class SalesTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        tableviewsales.dataSource = self
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

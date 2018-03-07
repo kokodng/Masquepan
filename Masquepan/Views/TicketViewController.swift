@@ -1,11 +1,11 @@
 import UIKit
 
-class TicketViewController: UIViewController, UITableViewDataSource {
+class TicketViewController: UIViewController, UITableViewDataSource, OnHttpResponse {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var totalLabel: UILabel!
-    
-    var total = 0.0
+    @IBOutlet weak var total: UILabel!
+    var login: Login = Login(ok: 0, token: "",idmember: "")
+    var ticketUploaded = false
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +39,9 @@ class TicketViewController: UIViewController, UITableViewDataSource {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        let productsView = self.tabBarController?.viewControllers?.first as! ProdsCollectionVC
+        self.login = productsView.login
+        ticketWithTicketsDetails.ticket.idmember = login.idmember!
         tableView.reloadData()
         total = 0.0
     }
@@ -52,5 +55,67 @@ class TicketViewController: UIViewController, UITableViewDataSource {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    @IBAction func uploadTicket(_ sender: UIBarButtonItem) {
+        print("ok" + login.token)
+        let jsondata =  try? JSONEncoder().encode(ticketWithTicketsDetails.ticket)
+        printJson(data : jsondata!)
+        guard let cliente = ClienteHttp(target: "tickets", authorization: "Bearer " + self.login.token,responseObject: self,
+                                        "POST", jsondata!) else {
+            return
+        }
+        cliente.request()
+    }
+    
+    func uploadTicketDetails(){
+        let ticketdetailsUp = TicketsDetails()
+        ticketdetailsUp.ticketsdetails = ticketWithTicketsDetails.ticketsDetails
+        let jsondata =  try? JSONEncoder().encode(ticketdetailsUp)
+        
+        printJson(data : jsondata!)
+        print("Update details")
+        guard let cliente = ClienteHttp(target: "ticketdetails", authorization: "Bearer " + self.login.token,responseObject: self,
+                                        "POST",jsondata!) else {
+                                            return
+        }
+        cliente.request()
+    }
+    
+    func onDataReceived(data: Data) {
+        checkLogin(data: data)
+    }
+    
+    func onErrorReceivingData(message: String) {
+        print("error reciving data")
+    }
+    
+    func checkLogin(data: Data){
+        do {
+            let loginRec = try JSONDecoder().decode(Login.self, from: data)
+            if loginRec.ok == 1 && ticketUploaded == false{
+                self.login.ok = 1
+                self.login.token = loginRec.token
+                ticketWithTicketsDetails.ticket.id = ticketWithTicketsDetails.ticketsDetails[0].idticket
+                myTickets.tickets.append(ticketWithTicketsDetails.ticket)
+                uploadTicketDetails()
+                ticketUploaded = true
+            } else if loginRec.ok == 1 && ticketUploaded == true{
+                print("Ticket completo subido ")
+                print(loginRec.ok)
+                ticketUploaded = false
+            }
+        } catch {
+            print("Error decoding login json")
+        }
+    }
+    
+    func printJson(data : Data){
+        var json : Any?
+        json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments)
+        if let json = json {
+            print("Ticket JSON:\n" + String(describing: json) + "\n")
+        }
 
+    }
+    
 }
