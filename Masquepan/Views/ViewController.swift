@@ -74,6 +74,8 @@ class ViewController: UIViewController, OnHttpResponse {
             lbMessage.text = "Credenciales no válidos"
             return
         }
+        UIApplication.shared.isNetworkActivityIndicatorVisible
+            = true
         let credentials = tfUser.text! + ":" + tfPassword.text!
         guard let cliente = ClienteHttp(target: "login", authorization: "Basic " + toBase64(cadena: credentials)!, responseObject: self) else {
             return
@@ -110,6 +112,8 @@ class ViewController: UIViewController, OnHttpResponse {
             break
         case "families":
             saveFamilies(data)
+            UIApplication.shared.isNetworkActivityIndicatorVisible
+                = false
             performSegue(withIdentifier: "SegueLoginToHome", sender: self)
             break
         default:
@@ -163,6 +167,8 @@ class ViewController: UIViewController, OnHttpResponse {
         } catch {
             lbMessage.text = "Credenciales no válidos"
             print("Error decoding login json")
+            UIApplication.shared.isNetworkActivityIndicatorVisible
+                = false
         }
     }
     
@@ -177,6 +183,8 @@ class ViewController: UIViewController, OnHttpResponse {
         do {
             myProducts = try JSONDecoder().decode(Products.self, from: data)
         } catch {
+            UIApplication.shared.isNetworkActivityIndicatorVisible
+                = false
             print("Error decoding products json")
         }
     }
@@ -193,6 +201,8 @@ class ViewController: UIViewController, OnHttpResponse {
             myTickets = try JSONDecoder().decode(Tickets.self, from: data)
         } catch {
             print("Error decoding tickets json")
+            UIApplication.shared.isNetworkActivityIndicatorVisible
+                = false
         }
     }
     
@@ -208,6 +218,8 @@ class ViewController: UIViewController, OnHttpResponse {
             myTicketsDetails = try JSONDecoder().decode(TicketsDetails.self, from: data)
         } catch {
             print("Error decoding ticketsdetails json")
+            UIApplication.shared.isNetworkActivityIndicatorVisible
+                = false
         }
     }
     
@@ -223,6 +235,8 @@ class ViewController: UIViewController, OnHttpResponse {
             myMembers = try JSONDecoder().decode(Members.self, from: data)
         } catch {
             print("Error decoding members json")
+            UIApplication.shared.isNetworkActivityIndicatorVisible
+                = false
         }
     }
     
@@ -238,6 +252,8 @@ class ViewController: UIViewController, OnHttpResponse {
             myFamilies = try JSONDecoder().decode(Families.self, from: data)
         } catch {
             print("Error decoding families json")
+            UIApplication.shared.isNetworkActivityIndicatorVisible
+                = false
         }
     }
     

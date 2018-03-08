@@ -424,6 +424,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Ticket" image="file-list-tick-7" id="pXX-A7-6es"/>
                     <connections>
+                        <outlet property="btnComprar" destination="bdx-x6-FRX" id="nhe-zi-bfa"/>
                         <outlet property="tableView" destination="Hug-1D-osa" id="GBK-6r-gKb"/>
                         <outlet property="totalLabel" destination="vvr-mO-G5s" id="Y4w-66-JWO"/>
                     </connections>

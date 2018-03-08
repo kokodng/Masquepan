@@ -7,6 +7,7 @@ class TicketViewController: UIViewController, UITableViewDataSource, OnHttpRespo
     var login: Login = Login(ok: 0, token: "",idmember: "")
     var ticketUploaded = false
     @IBOutlet weak var totalLabel: UILabel!
+    @IBOutlet weak var btnComprar: UIBarButtonItem!
     
     var total = 0.0
         
@@ -43,6 +44,11 @@ class TicketViewController: UIViewController, UITableViewDataSource, OnHttpRespo
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        if (ticketWithTicketsDetails.ticketsDetails.count == 0) {
+            btnComprar.isEnabled = false
+        } else {
+            btnComprar.isEnabled = true
+        }
         tableView.reloadData()
         productsView = self.tabBarController?.viewControllers?.first as? ProdsCollectionVC
         self.login = (productsView?.login)!
@@ -63,7 +69,8 @@ class TicketViewController: UIViewController, UITableViewDataSource, OnHttpRespo
     @IBAction func uploadTicket(_ sender: UIBarButtonItem) {
         setTicketDate()
         let jsondata =  try? JSONEncoder().encode(ticketWithTicketsDetails.ticket)
-        printJson(data : jsondata!)
+        UIApplication.shared.isNetworkActivityIndicatorVisible
+            = true
         guard let cliente = ClienteHttp(target: "tickets", authorization: "Bearer " + self.login.token,responseObject: self,
                                         "POST", jsondata!) else {
             return
@@ -105,6 +112,8 @@ class TicketViewController: UIViewController, UITableViewDataSource, OnHttpRespo
                 ticketUploaded = true
             } else if loginRec.ok == 1 && ticketUploaded == true{
                 print("Ticket completo subido ")
+                UIApplication.shared.isNetworkActivityIndicatorVisible
+                    = false
                 print(loginRec.ok)
                 ticketWithTicketsDetails = TicketWithTicketsDetails()
                 ticketUploaded = false
@@ -114,6 +123,8 @@ class TicketViewController: UIViewController, UITableViewDataSource, OnHttpRespo
             }
         } catch {
             print("Error decoding login json")
+            UIApplication.shared.isNetworkActivityIndicatorVisible
+                = false
         }
     }
     
