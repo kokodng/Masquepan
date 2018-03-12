@@ -165,7 +165,7 @@ class ViewController: UIViewController, OnHttpResponse {
                 self.state = "products"
             }
         } catch {
-            lbMessage.text = "Credenciales no válidos"
+            showAlert(msg: "Credenciales no validas o la conexion con el servidor no ")
             print("Error decoding login json")
             UIApplication.shared.isNetworkActivityIndicatorVisible
                 = false
@@ -255,6 +255,12 @@ class ViewController: UIViewController, OnHttpResponse {
             UIApplication.shared.isNetworkActivityIndicatorVisible
                 = false
         }
+    }
+    
+    func showAlert(msg: String){
+        let alert = UIAlertController(title: "Alert", message: msg, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Entiendo", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
 }
