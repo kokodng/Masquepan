@@ -43,6 +43,18 @@ class TicketViewController: UIViewController, UITableViewDataSource, OnHttpRespo
         return cell
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let subtotal = ticketWithTicketsDetails.ticketsDetails[indexPath.row].price
+            total = total - Double(subtotal)!
+            totalLabel.text = String(total)
+            ticketWithTicketsDetails.ticketsDetails.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         if (ticketWithTicketsDetails.ticketsDetails.count == 0) {
             btnComprar.isEnabled = false

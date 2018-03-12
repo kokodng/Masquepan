@@ -127,12 +127,12 @@
 				33D6963A204FDAC30061997B /* SalesTableViewCell.swift */,
 				338C6DB6204E979900D9789D /* SalesTableViewController.swift */,
 				33FDE43E2047F364002F0135 /* ProductDetailViewController.swift */,
-				33C5F22D204EAF72008DB67E /* TicketTableViewCell.swift */,
-				33C9EBE42032F97900256E94 /* ViewController.swift */,
 				33084B6E203EB26A00215A50 /* ProdCellVC.swift */,
 				33084B70203EB28500215A50 /* ProdsCollectionVC.swift */,
+				33C5F22D204EAF72008DB67E /* TicketTableViewCell.swift */,
 				332FAA04204EBBEF0002FCFE /* TicketViewController.swift */,
 				33D6963C205007D80061997B /* Toast.swift */,
+				33C9EBE42032F97900256E94 /* ViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
